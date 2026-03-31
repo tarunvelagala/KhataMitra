@@ -29,7 +29,6 @@ abstract final class _Dims {
   static const double spaceAfterIcon      = 20;
   static const double spaceAfterSubtitle  = 8;
   static const double spaceBeforeGrid     = 32;
-  static const double spaceAfterButton    = 12;
   static const double spaceCardLabel      = 2;
 
   // Language card grid
@@ -157,11 +156,6 @@ class LanguageSelectionScreen extends ConsumerWidget {
                       icon: const Icon(Icons.arrow_forward),
                       label: Text(l10n.onboardingNext),
                     ),
-                  ),
-                  const SizedBox(height: _Dims.spaceAfterButton),
-                  Text(
-                    l10n.appTagline,
-                    style: tt.labelSmall?.copyWith(color: cs.outline),
                   ),
                 ],
               ),

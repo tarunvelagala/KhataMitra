@@ -10,7 +10,7 @@ import '../widgets/step_indicator.dart';
 abstract final class _Dims {
   // Scroll area padding
   static const double scrollPadH   = 24;
-  static const double scrollPadTop = 32;
+  static const double scrollPadTop = 8;
   static const double scrollPadBot = 16;
 
   // Bottom CTA bar padding
@@ -29,7 +29,6 @@ abstract final class _Dims {
   static const double spaceBeforeForm      = 32;
   static const double spaceAfterTextField  = 24;
   static const double spaceAfterGridLabel  = 12;
-  static const double spaceAfterButton     = 12;
 
   // Business type grid
   static const int    gridColumns     = 2;
@@ -88,6 +87,15 @@ class _ShopDetailsScreenState extends ConsumerState<ShopDetailsScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            // ── Back navigation ──────────────────────────────────────
+            Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.pop(),
+              ),
+            ),
+
             // ── Scrollable content ───────────────────────────────────
             Expanded(
               child: SingleChildScrollView(
@@ -197,11 +205,6 @@ class _ShopDetailsScreenState extends ConsumerState<ShopDetailsScreen> {
                       icon: const Icon(Icons.arrow_forward),
                       label: Text(l10n.onboardingNext),
                     ),
-                  ),
-                  const SizedBox(height: _Dims.spaceAfterButton),
-                  Text(
-                    l10n.appTagline,
-                    style: tt.labelSmall?.copyWith(color: cs.outline),
                   ),
                 ],
               ),

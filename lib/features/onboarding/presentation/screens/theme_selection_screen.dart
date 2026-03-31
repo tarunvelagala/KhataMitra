@@ -10,7 +10,7 @@ import '../widgets/step_indicator.dart';
 abstract final class _Dims {
   // Scroll area padding
   static const double scrollPadH   = 24;
-  static const double scrollPadTop = 32;
+  static const double scrollPadTop = 8;
   static const double scrollPadBot = 16;
 
   // Bottom CTA bar padding
@@ -26,21 +26,20 @@ abstract final class _Dims {
   // Spacing
   static const double spaceAfterIcon     = 20;
   static const double spaceAfterSubtitle = 8;
-  static const double spaceBeforeCards   = 32;
-  static const double spaceAfterButton   = 12;
-  static const double spaceBetweenCards  = 16;
+  static const double spaceBeforeCards   = 20;
+  static const double spaceBetweenCards  = 12;
 
   // Theme card
   static const double cardRadius  = AppDimensions.radiusMedium;
-  static const double cardPad     = 20;
-  static const double cardPadBot  = 24;
+  static const double cardPad     = 12;
+  static const double cardPadBot  = 16;
 
   // Card border widths reuse shared tokens
   static const double cardBorderSelected   = AppDimensions.borderFocused;
   static const double cardBorderUnselected = AppDimensions.borderDefault;
 
   // Card preview window
-  static const double previewHeight = 120;
+  static const double previewHeight = 80;
 
   // Preview mock elements
   static const double previewBarH       = 8;
@@ -50,9 +49,9 @@ abstract final class _Dims {
   static const double previewBarW3      = 60;
   static const double previewBarW5      = 48;
   static const double previewCardRadius = AppDimensions.radiusSmall;
-  static const double previewSpacingSm  = 6;
-  static const double previewSpacingMd  = 10;
-  static const double previewPad        = 12;
+  static const double previewSpacingSm  = 4;
+  static const double previewSpacingMd  = 6;
+  static const double previewPad        = 8;
   static const double previewDividerH   = 1;
 
   // Active badge
@@ -83,6 +82,15 @@ class ThemeSelectionScreen extends ConsumerWidget {
       body: SafeArea(
         child: Column(
           children: [
+            // ── Back navigation ──────────────────────────────────────
+            Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.pop(),
+              ),
+            ),
+
             // ── Scrollable content ───────────────────────────────────
             Expanded(
               child: SingleChildScrollView(
@@ -126,6 +134,14 @@ class ThemeSelectionScreen extends ConsumerWidget {
                     const SizedBox(height: _Dims.spaceBeforeCards),
 
                     // Theme cards
+                                        _ThemeModeCard(
+                      mode: ThemeMode.system,
+                      label: l10n.themeSystemLabel,
+                      activeLabel: l10n.themeActive,
+                      isSelected: selected == ThemeMode.system,
+                      onTap: () => ref.read(themeModeProvider.notifier).select(ThemeMode.system),
+                    ),
+                    const SizedBox(height: _Dims.spaceBetweenCards),
                     _ThemeModeCard(
                       mode: ThemeMode.light,
                       label: l10n.themeLightLabel,
@@ -140,14 +156,6 @@ class ThemeSelectionScreen extends ConsumerWidget {
                       activeLabel: l10n.themeActive,
                       isSelected: selected == ThemeMode.dark,
                       onTap: () => ref.read(themeModeProvider.notifier).select(ThemeMode.dark),
-                    ),
-                    const SizedBox(height: _Dims.spaceBetweenCards),
-                    _ThemeModeCard(
-                      mode: ThemeMode.system,
-                      label: l10n.themeSystemLabel,
-                      activeLabel: l10n.themeActive,
-                      isSelected: selected == ThemeMode.system,
-                      onTap: () => ref.read(themeModeProvider.notifier).select(ThemeMode.system),
                     ),
                   ],
                 ),
@@ -182,11 +190,6 @@ class ThemeSelectionScreen extends ConsumerWidget {
                       icon: const Icon(Icons.arrow_forward),
                       label: Text(l10n.onboardingNext),
                     ),
-                  ),
-                  const SizedBox(height: _Dims.spaceAfterButton),
-                  Text(
-                    l10n.appTagline,
-                    style: tt.labelSmall?.copyWith(color: cs.outline),
                   ),
                 ],
               ),
