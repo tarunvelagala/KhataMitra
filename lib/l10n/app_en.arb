@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appTitle": "KhataMitra",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "comingSoon": "KhataMitra — Coming soon!",
+  "@comingSoon": {
+    "description": "Text shown on the landing/placeholder screen"
+  }
+}
