@@ -31,4 +31,4 @@ lib/l10n/*.dart
 
 # IntelliJ,VSCode
 *.iml
-/.idea/
+.idea/
