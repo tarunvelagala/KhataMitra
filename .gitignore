@@ -28,3 +28,7 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 lib/l10n/*.dart
+
+# IntelliJ,VSCode
+*.iml
+.idea/
