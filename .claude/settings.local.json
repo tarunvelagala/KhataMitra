@@ -4,7 +4,11 @@
       "Bash(flutter pub:*)",
       "Bash(dart analyze:*)",
       "Bash(flutter test:*)",
-      "Bash(dart format:*)"
+      "Bash(dart format:*)",
+      "Bash(adb -s emulator-5554 logcat -d)",
+      "Bash(adb -s emulator-5554 shell pm list packages)",
+      "Bash(adb -s emulator-5554 shell dumpsys activity activities)",
+      "Bash(adb:*)"
     ]
   }
 }
