@@ -11,5 +11,18 @@
         "FLUTTER_SDK": "/Users/C5404787/flutter"
       }
     }
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/C5404787/workplace/personal/khata_mitra && dart analyze && flutter test"
+          }
+        ]
+      }
+    ]
   }
 }
