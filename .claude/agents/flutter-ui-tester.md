@@ -1,6 +1,6 @@
 ---
 name: flutter-ui-tester
-description: Use this agent to run the KhataMitra Flutter app on the local Android emulator (emulator-5554), capture screenshots, check for runtime errors, RenderFlex overflows, and verify responsive behavior at mobile and tablet widths. Use after implementing any UI screen.
+description: Use this agent to run the KhataMitra Flutter app on the local Android emulator (emulator-5554), capture screenshots, check for runtime errors, RenderFlex overflows, and verify responsive behavior, and different locale settings at mobile and tablet widths. Use after implementing any UI screen.
 tools: Bash, Read, Glob
 ---
 

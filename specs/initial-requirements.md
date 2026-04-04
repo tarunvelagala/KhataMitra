@@ -50,25 +50,35 @@ KhataMitra ("ledger friend" in Hindi/Urdu) is a mobile-first bookkeeping app for
 |----|-------------|
 | F-AU-01 | Login is mandatory. An unauthenticated user cannot access any app screen beyond the login flow. |
 | F-AU-02 | v1 supports phone number + OTP only. Google sign-in is explicitly deferred to v2. |
-| F-AU-03 | Phone number entry screen: a single numeric field accepting a 10-digit Indian mobile number (no country code picker in v1; +91 is assumed). |
-| F-AU-04 | "Send OTP" button is disabled until a valid 10-digit number is entered. |
-| F-AU-05 | On submit, an OTP is sent to the provided number via SMS. |
-| F-AU-06 | OTP verification screen: a 6-digit code input field with auto-advance between digits. |
-| F-AU-07 | OTP expires after 5 minutes. Show a countdown timer and a "Resend OTP" option that becomes active after 30 seconds. |
+| F-AU-03 | Login is a **single screen** (`/login`) using progressive disclosure. Initially only the phone number field is visible. |
+| F-AU-04 | Phone number field accepts a 10-digit Indian mobile number (no country code picker in v1; +91 is assumed). "Send OTP" button is disabled until exactly 10 digits are entered. |
+| F-AU-05 | On "Send OTP" tap, an OTP is dispatched via SMS. On success, the OTP input section animates in on the same screen (e.g. `AnimatedSize` slide-in); the phone field remains visible above it. The OTP input is auto-focused immediately. |
+| F-AU-06 | OTP input section: a 6-digit code field with auto-advance between digit cells. |
+| F-AU-07 | OTP expires after 5 minutes. A countdown timer is shown below the OTP field. A "Resend OTP" link appears alongside the OTP field and is disabled for the first 30 seconds, then becomes active. |
 | F-AU-08 | On successful OTP verification, persist the session locally so the user is not asked to log in again on subsequent launches. |
-| F-AU-09 | On failed OTP (wrong code): show an inline error and allow retry. After 3 consecutive failures, block further attempts for 10 minutes and show a clear message. |
-| F-AU-10 | The user can go back from the OTP screen to correct their phone number. |
+| F-AU-09 | On failed OTP (wrong code): show an inline error below the digit cells and allow retry. After 3 consecutive failures, block further attempts for 10 minutes and show a clear message with the remaining lockout time. |
+| F-AU-10 | The user can clear the phone number field (or tap an edit icon next to it) while the OTP section is visible to re-enter their number; doing so resets the OTP state and hides the OTP section. |
 | F-AU-11 | Sign out: available from Settings. Clears the local session; next launch shows the login screen. Sign-out does NOT delete local data. |
 | F-AU-12 | The authenticated phone number is stored locally and never transmitted to analytics or crash reporters. |
 
 ### 3.2 Onboarding
 
+The first-launch onboarding flow has four steps, in order:
+
+1. **Language selection** — user picks their preferred language (EN / HI / TE).
+2. **Business name entry** — user enters their shop / business name.
+3. **Theme selection** — user picks Light, Dark, or System Default.
+4. **Feature tour** — a skippable 3-screen walkthrough of core features.
+
 | ID | Requirement |
 |----|-------------|
-| F-ON-01 | On first launch, show a welcome screen that explains the app's purpose and prompts the user to enter their business name. |
-| F-ON-02 | Business name is mandatory; the user cannot proceed without it. |
-| F-ON-03 | After entering the business name, show a brief (skippable) 2-screen tour of core features. |
-| F-ON-04 | On subsequent launches, skip onboarding and go directly to the Dashboard. |
+| F-ON-01 | On first launch (after login), begin the onboarding flow with the Language Selection screen. |
+| F-ON-02 | Language selection is mandatory; the user cannot proceed without choosing one of EN / HI / TE. The selected language takes effect immediately and is persisted via `SharedPreferences`. |
+| F-ON-03 | After language selection, show the Business Name screen. The business name is mandatory; the user cannot proceed without entering one. |
+| F-ON-04 | After business name entry, show the Theme Selection screen. The user chooses Light, Dark, or System Default. The choice takes effect immediately and is persisted. |
+| F-ON-05 | After theme selection, show a brief (skippable) 3-screen feature tour. The three slides are: (1) "Track every rupee", (2) "Send reminders easily", (3) "Your data, always safe". |
+| F-ON-06 | The feature tour has "Next" and "Skip" buttons. Tapping "Skip" on any slide, or "Get Started" on the final slide, completes onboarding and navigates to the Dashboard. |
+| F-ON-07 | On subsequent launches, skip the entire onboarding flow and go directly to the Dashboard. |
 
 ### 3.3 Runtime Permissions
 
@@ -354,10 +364,13 @@ This section is exhaustive. Every scenario here must have a corresponding test o
 
 | ID | Scenario | Required behaviour |
 |----|----------|--------------------|
-| EC-ON-01 | **App killed mid-onboarding** — process killed after business name was typed but before "Continue" was tapped. | Business name not saved; on relaunch show the business name screen again (onboarding not complete). |
+| EC-ON-01 | **App killed mid-onboarding** — process killed after business name was typed but before "Continue" was tapped. | Business name not saved; on relaunch resume from the business name screen (language already saved, onboarding not complete). |
 | EC-ON-02 | **Business name save fails** (DB write error). | Show error below the field: "Couldn't save. Try again." Do not navigate forward. |
 | EC-ON-03 | **Business name is only whitespace** — user types spaces and taps Continue. | Treat as empty; disable/block Continue. Trim before validation. |
 | EC-ON-04 | **Business name exceeds reasonable length** — e.g. 200+ characters. | Cap input at 100 characters. Show character counter at 80+. |
+| EC-ON-05 | **App killed after language was saved but before business name was entered**. | On relaunch, skip language selection (already persisted) and resume from business name screen. |
+| EC-ON-06 | **App killed after theme was saved but before tour was shown**. | On relaunch, skip language + business name + theme steps (all persisted) and resume from the feature tour. |
+| EC-ON-07 | **Theme preference write fails** during onboarding. | Continue with the in-memory theme; show no error (non-critical). On next launch, system default is used. Onboarding still advances. |
 
 ---
 
@@ -527,9 +540,11 @@ createdAt     DateTime
 
 | Screen | Route | Notes |
 |--------|-------|-------|
-| Phone Number Entry | `/login` | Always shown when unauthenticated |
-| OTP Verification | `/login/otp` | Follows phone entry |
-| Welcome / Onboarding | `/onboarding` | First-launch only, after first successful login |
+| Login (phone + OTP) | `/login` | Single screen; OTP section reveals inline after "Send OTP" |
+| Onboarding — Language Selection | `/onboarding/language` | First-launch step 1; mandatory |
+| Onboarding — Business Name | `/onboarding/name` | First-launch step 2; mandatory |
+| Onboarding — Theme Selection | `/onboarding/theme` | First-launch step 3; mandatory |
+| Onboarding — Feature Tour | `/onboarding/tour` | First-launch step 4; skippable 3-slide PageView |
 | Dashboard | `/home` | Customer list + summary totals |
 | Add / Edit Customer | `/customer/new`, `/customer/:id/edit` | Sheet or full screen |
 | Customer Ledger | `/customer/:id` | Transaction history |

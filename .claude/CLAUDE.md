@@ -18,6 +18,10 @@ UI designs are in Google Stitch: https://stitch.withgoogle.com/project/382302020
 
 Always refer to this project when implementing or reviewing UI screens.
 
+The synthesized design system (color tokens, typography, spacing, component specs, and screen descriptions) is in [`.stitch/DESIGN.md`](../.stitch/DESIGN.md). This is the **primary local reference** for all design decisions. Consult it before implementing any screen or component.
+
+Screen generation prompts (ready to pass to `mcp_StitchMCP_generate_screen_from_text`) are in `.stitch/designs/prompts/`. Each `.txt` file contains a detailed prompt for one screen.
+
 ## Requirements
 
 Detailed functional and non-functional requirements are in [`specs/initial-requirements.md`](../specs/initial-requirements.md).
@@ -123,6 +127,21 @@ Source strings live in `app_en.arb` / `app_hi.arb` / `app_te.arb`. Generated Dar
 ### Theme (`lib/core/theme/`)
 
 Material 3 light and dark themes configured in `app_theme.dart`. Color tokens in `app_colors.dart`; typography in `app_text_styles.dart`. A custom `ThemeExtension` (`AppSurfaceColors`) provides five tonal surface levels accessible via `Theme.of(context).extension<AppSurfaceColors>()`.
+
+### Auth Flow (Phase 1)
+
+The login screen uses a **single-screen progressive disclosure** pattern — no separate OTP screen:
+
+1. User enters phone number → taps "Send OTP"
+2. OTP input field animates in on the **same screen** (e.g. `AnimatedSize` slide-in); phone field stays visible
+3. User enters OTP → taps "Verify"
+
+The auth Riverpod notifier uses a sealed state class with three states:
+- `AuthState.phoneInput` — initial state, only phone field visible
+- `AuthState.otpPending(phone)` — OTP field revealed, resend countdown active
+- `AuthState.verifying` — async verification in progress
+
+On OTP reveal, auto-focus the OTP field. The "Send OTP" button transforms into a "Resend" link with a countdown timer alongside the OTP field.
 
 ### Feature Structure
 

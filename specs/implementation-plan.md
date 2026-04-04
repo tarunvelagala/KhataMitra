@@ -157,60 +157,52 @@ Missing from `pubspec.yaml` (will be added per phase):
 - `OtpService` abstract class: `sendOtp(String phoneNumber) → Future<void>`, `verifyOtp(String phoneNumber, String code) → Future<bool>`
 - `MockOtpService`: always sends successfully; accepts `"123456"` as valid code (for development/testing)
 - `otpServiceProvider`: returns `MockOtpService`; easy to swap for Firebase in v2
-- `OtpState`: sealed — `idle | sending | codeSent | verifying | verified | failed(message)`
+- `OtpState`: sealed — `phoneInput | sending | otpPending(phone) | verifying | verified | failed(message)`
 - `otpStateProvider`: `AsyncNotifier` orchestrating the OTP flow; enforces 3-failure lockout with `DateTime`-based unlock time
 
 **Tests**: `test/auth/otp_provider_test.dart` — send, verify correct, verify wrong ×3 lockout.
 
 ---
 
-### P1-C3 — Phone number entry screen
+### P1-C3 — Login screen (phone entry + inline OTP)
 
-**Commit**: `feat: add phone number entry screen with validation`
+**Commit**: `feat: add single-screen login with phone entry and inline OTP reveal`
 
 | Area | Files touched |
 |------|--------------|
-| Screen | `lib/features/auth/screens/phone_entry_screen.dart` |
+| Screen | `lib/features/auth/screens/login_screen.dart` |
 | Route | `lib/router/app_router.dart` (add `/login` route) |
 | l10n | `lib/l10n/app_en.arb`, `app_hi.arb`, `app_te.arb` + regenerate |
 
 **What to do**:
-- Full-screen layout using `AppScaffold`; single `AppInput` for 10-digit number with numeric keyboard
-- `AppButton(variant: filled, fullWidth: true)` disabled until exactly 10 digits entered
-- On submit: calls `otpStateProvider.notifier.sendOtp()`; `isLoading: true` on the button while sending; navigates to `/login/otp` on `codeSent`
-- Matches Stitch design reference for this screen
+- Single `AppScaffold` screen — no sub-routes for OTP
+- Phase 1: phone number `AppInput` (numeric keyboard, 10-digit) + `AppButton(variant: filled, fullWidth: true, label: "Send OTP")` disabled until 10 digits entered
+- On "Send OTP" tap: calls `otpStateProvider.notifier.sendOtp()`; button shows `isLoading: true` while sending
+- Phase 2 (OTP reveal — `AnimatedSize` slide-in, triggered on `codeSent` state):
+  - Phone field remains visible; an edit icon (or clear button) next to it lets the user reset back to phone-entry state
+  - 6 single-digit `AppInput` cells (narrow, centred) with auto-advance on input and auto-backspace on delete; auto-focused on reveal
+  - 5-minute countdown timer below digit cells
+  - "Resend OTP" `AppButton(variant: text)` disabled for 30 s then enabled; sits alongside the countdown
+  - On complete 6-digit entry: auto-calls `otpStateProvider.notifier.verifyOtp()`
+  - Wrong code → inline error below digit cells; 3 failures → lockout message with remaining time
+  - Success → `authStateProvider.notifier.login(phoneNumber)` → router redirects to `/home`
+- Matches Stitch design reference
 - All strings from l10n
 
-**Tests**: `test/auth/phone_entry_screen_test.dart` — button disabled with 9 digits, enabled at 10, tapping it triggers provider.
+**Riverpod state machine** (`OtpState` sealed class):
+- `phoneInput` — initial; only phone field visible
+- `otpPending(phone)` — OTP sent; OTP section revealed; countdown active
+- `verifying` — async verification in progress
 
----
-
-### P1-C4 — OTP verification screen
-
-**Commit**: `feat: add OTP verification screen with countdown and retry logic`
-
-| Area | Files touched |
-|------|--------------|
-| Screen | `lib/features/auth/screens/otp_verification_screen.dart` |
-| Route | `lib/router/app_router.dart` (add `/login/otp` route) |
-| l10n | `.arb` files + regenerate |
-
-**What to do**:
-- `AppScaffold` with back arrow navigating back to phone entry (clears OTP state)
-- 6 single-digit `AppInput` cells (narrow, centred) with auto-advance on input and auto-backspace on delete
-- 5-minute countdown timer; `AppButton(variant: text)` "Resend OTP" disabled for 30 seconds then enabled
-- On complete 6-digit entry: auto-calls `verifyOtp()`
-- Success → `authStateProvider.notifier.login(phoneNumber)` → router redirects to `/home`
-- Wrong code → inline error below digit cells; after 3 failures show lockout message with remaining time via `AppButton(isLoading: true)` or disabled state
-- Matches Stitch design reference
-
-**Tests**: `test/auth/otp_verification_screen_test.dart` — renders, auto-advances, shows error on wrong code.
+**Tests**: `test/auth/login_screen_test.dart` — send-OTP button disabled at 9 digits / enabled at 10; OTP section hidden initially / visible after `codeSent`; auto-advances digit cells; shows error on wrong code; shows lockout after 3 failures.
 
 ---
 
 ## Phase 2 — Onboarding
 
-> **Goal**: first-time user sees business name setup after login. Returning users skip it.
+> **Goal**: first-time user steps through language → business name → theme → feature tour after login. Returning users skip it entirely.
+>
+> Onboarding completion is tracked by a single `SharedPreferences` boolean flag (`onboarding_complete`). Each step that writes durable data (language, business name, theme) does so immediately on "Continue" so that a mid-flow kill resumes at the correct step.
 
 ---
 
@@ -225,30 +217,69 @@ Missing from `pubspec.yaml` (will be added per phase):
 
 **What to do**:
 - `BusinessRepository`: Drift DAO wrapping `BusinessTable`; `getBusiness() → Future<Business?>`, `saveBusiness(name) → Future<void>`
-- `onboardingCompleteProvider`: returns `true` if a business record exists; `false` otherwise
-- Router: add redirect — after login, if `!onboardingComplete` go to `/onboarding`; else go to `/home`
+- `OnboardingStep` enum: `language`, `businessName`, `theme`, `tour`, `complete` — persisted as an int in `SharedPreferences` so mid-flow kills resume at the correct step
+- `onboardingStepProvider`: `keepAlive: true` AsyncNotifier; reads the persisted step on `build()`; exposes `advance()` to move to the next step
+- `onboardingCompleteProvider`: derived — `true` when step == `complete`
+- Router: add redirect — after login, if `!onboardingComplete` go to `/onboarding/language`; else go to `/home`
 
-**Tests**: `test/onboarding/business_repository_test.dart`, `test/onboarding/onboarding_provider_test.dart`.
+**Tests**: `test/onboarding/business_repository_test.dart`, `test/onboarding/onboarding_provider_test.dart` — step advances correctly, persists across provider rebuild, complete flag derived correctly.
 
 ---
 
 ### P2-C2 — Onboarding screens
 
-**Commit**: `feat: add business name entry and feature tour onboarding screens`
+**Commit**: `feat: add language selection, business name, theme selection, and feature tour onboarding screens`
 
 | Area | Files touched |
 |------|--------------|
-| Screens | `lib/features/onboarding/screens/business_name_screen.dart`, `feature_tour_screen.dart` |
-| Route | `lib/router/app_router.dart` (add `/onboarding` sub-routes) |
+| Screens | `lib/features/onboarding/screens/language_selection_screen.dart` |
+| | `lib/features/onboarding/screens/business_name_screen.dart` |
+| | `lib/features/onboarding/screens/theme_selection_screen.dart` |
+| | `lib/features/onboarding/screens/feature_tour_screen.dart` |
+| Route | `lib/router/app_router.dart` (add `/onboarding/language`, `/onboarding/name`, `/onboarding/theme`, `/onboarding/tour`) |
 | l10n | `.arb` files + regenerate |
 
 **What to do**:
-- `BusinessNameScreen`: single required `TextField`; "Continue" button disabled when empty; saves business on submit via `businessRepository`; navigates to tour
-- `FeatureTourScreen`: 2-page `PageView` with illustration + description per page; "Skip" and "Next"/"Done" buttons; marks onboarding complete in provider on "Done" or "Skip"
+
+**`LanguageSelectionScreen`** (step 1):
+- App icon + "KhataMitra" wordmark at top
+- Three `AppCard`-based selection tiles: English, हिंदी, తెలుగు — each with a language code badge, native name, and native subtitle
+- Selected tile shows a filled check circle (primary colour); unselected tiles have an outline border
+- "Continue" button always enabled (a language is always pre-selected — default EN)
+- On "Continue": persists locale via `localeStateProvider` (already in codebase) + `SharedPreferences`; advances `onboardingStepProvider` to `businessName`; navigates to `/onboarding/name`
 - Matches Stitch design reference
+
+**`BusinessNameScreen`** (step 2):
+- Back button returns to language selection (does not reset language)
+- 2-dot progress indicator (step 1 of 2 in the name+theme pair)
+- Store icon illustration, heading, `AppInput` for business name (required, 100-char cap, character counter at 80+)
+- "Continue" button disabled when field empty or whitespace-only; trims before save
+- "Skip for now" text button — advances without saving (business name remains null; can be set later in Settings)
+- On "Continue": saves via `businessRepository`; advances step to `theme`; navigates to `/onboarding/theme`
+- Matches Stitch design reference
+
+**`ThemeSelectionScreen`** (step 3):
+- Back button returns to business name screen
+- App icon + wordmark at top; "Choose your theme" subtitle
+- Three `AppCard`-based selection tiles: Light (sun icon, white bg), Dark (moon icon, dark bg), System Default (contrast icon)
+- Selected tile highlighted with primary border + check circle
+- "Continue" button always enabled (Light pre-selected)
+- On "Continue": persists theme via `themeProvider` + `SharedPreferences`; advances step to `tour`; navigates to `/onboarding/tour`
+- Matches Stitch design reference
+
+**`FeatureTourScreen`** (step 4):
+- `PageView` with 3 slides:
+  - Slide 1: "Track every rupee" — ledger illustration, dot indicator (active = slide 1)
+  - Slide 2: "Send reminders easily" — WhatsApp/SMS illustration, dot indicator (active = slide 2)
+  - Slide 3: "Your data, always safe" — shield illustration, dot indicator (active = slide 3)
+- Each slide: illustration area (Lottie placeholder or static asset), headline, body copy
+- Footer: "Next" filled pill button + "Skip" text link on slides 1–2; "Get Started" filled pill button on slide 3
+- Tapping "Skip" or "Get Started": calls `onboardingStepProvider.advance()` to `complete`; navigates to `/home`
+- Dot indicators update on swipe as well as button tap
+- Matches Stitch design reference (3 slides, no back arrow on tour)
 - All strings from l10n
 
-**Tests**: widget smoke tests for both screens.
+**Tests**: widget smoke tests for all four screens — renders without error, "Continue" disabled on empty name, language/theme selection reflected in tile state, tour "Skip" navigates to home, tour dot indicator reflects current page.
 
 ---
 
@@ -763,9 +794,11 @@ Missing from `pubspec.yaml` (will be added per phase):
 
 | Route | Screen | Auth guard |
 |-------|--------|-----------|
-| `/login` | Phone number entry | Public |
-| `/login/otp` | OTP verification | Public |
-| `/onboarding` | Business name + tour | Authenticated, onboarding incomplete |
+| `/login` | Login (phone entry + inline OTP reveal) | Public |
+| `/onboarding/language` | Onboarding step 1 — Language selection | Authenticated, onboarding incomplete |
+| `/onboarding/name` | Onboarding step 2 — Business name entry | Authenticated, onboarding incomplete |
+| `/onboarding/theme` | Onboarding step 3 — Theme selection | Authenticated, onboarding incomplete |
+| `/onboarding/tour` | Onboarding step 4 — Feature tour (3 slides) | Authenticated, onboarding incomplete |
 | `/home` | App shell (nav bar) | Authenticated + onboarded |
 | `/home/dashboard` | Dashboard | — |
 | `/home/catalog` | Image catalog | — |

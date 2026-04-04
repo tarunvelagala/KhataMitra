@@ -6,7 +6,8 @@
       "Bash(flutter test:*)",
       "Bash(dart format:*)",
       "Bash(adb:*)",
-      "Bash(flutter run:*)"
+      "Bash(flutter run:*)",
+      "mcp__ide__executeCode"
     ]
   }
 }

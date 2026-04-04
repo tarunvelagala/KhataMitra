@@ -1,5 +1,13 @@
 {
   "mcpServers": {
+    "StitchMCP": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "stitch-mcp"],
+      "env": {
+        "GOOGLE_CLOUD_PROJECT": "khatamitra-492302"
+      }
+    },
     "dart": {
       "type": "stdio",
       "command": "/Users/C5404787/flutter/bin/cache/dart-sdk/bin/dartaotruntime",
