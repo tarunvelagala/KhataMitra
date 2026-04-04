@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../features/theme/presentation/theme_selection_screen.dart';
+
 part 'app_router.g.dart';
 
 @riverpod
@@ -11,15 +13,7 @@ GoRouter appRouter(Ref ref) {
     routes: [
       GoRoute(
         path: '/theme',
-        builder: (context, state) => Scaffold(
-          appBar: AppBar(title: const Text('Theme Screen Phase')),
-          body: Center(
-            child: ElevatedButton(
-              onPressed: () => context.go('/language'),
-              child: const Text('Next'),
-            ),
-          ),
-        ),
+        builder: (context, state) => const ThemeSelectionScreen(),
       ),
       GoRoute(
         path: '/language',
