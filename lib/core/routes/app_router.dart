@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/theme/presentation/theme_selection_screen.dart';
+import '../../features/language/presentation/language_selection_screen.dart';
 
 part 'app_router.g.dart';
 
@@ -17,15 +18,7 @@ GoRouter appRouter(Ref ref) {
       ),
       GoRoute(
         path: '/language',
-        builder: (context, state) => Scaffold(
-          appBar: AppBar(title: const Text('Language Screen Phase')),
-          body: Center(
-            child: ElevatedButton(
-              onPressed: () => context.go('/login'),
-              child: const Text('Next'),
-            ),
-          ),
-        ),
+        builder: (context, state) => const LanguageSelectionScreen(),
       ),
       GoRoute(
         path: '/login',
