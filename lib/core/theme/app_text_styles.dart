@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ── Private type scale tokens ──────────────────────────────────────────────
 // These are implementation details of the typography system.
-// Callers should use the AppTextStyles getters, never these raw numbers.
+// Callers should use AppTextStyles, never these raw numbers.
 abstract final class _TypeScale {
   // Font sizes
   static const double displayLarge   = 57;
@@ -34,16 +34,74 @@ abstract final class _TypeScale {
   static const double spacingXxl    =  1.00;
 }
 
-/// Typography system for KhataMitra.
+/// Typography system for KhataPro.
 ///
-/// - Headline / Display: Plus Jakarta Sans (bold, brand identity)
-/// - Body / Label:       Inter (readable, utility text)
+/// Call [forLocale] to get a [TextTheme] with the correct font family for the
+/// active locale:
+/// - Latin (en): Plus Jakarta Sans (headlines) + Inter (body/labels)
+/// - Hindi (hi): Noto Sans Devanagari
+/// - Telugu (te): Noto Sans Telugu
+/// - Tamil (ta): Noto Sans Tamil
+/// - Kannada (kn): Noto Sans Kannada
+/// - Malayalam (ml): Noto Sans Malayalam
 ///
 /// `inherit: true` is set on every style so Flutter can lerp between light and
 /// dark ThemeData without "Failed to interpolate TextStyles" errors.
 /// Colors are intentionally absent — they are applied by ThemeData.textTheme
 /// so that light and dark themes resolve correctly at runtime.
 abstract final class AppTextStyles {
+  /// Returns the correct [TextTheme] for [locale].
+  static TextTheme forLocale(Locale locale) => switch (locale.languageCode) {
+    'hi' => _notoSansDevanagariTheme,
+    'te' => _notoSansTeluguTheme,
+    'ta' => _notoSansTamilTheme,
+    'kn' => _notoSansKannadaTheme,
+    'ml' => _notoSansMalayalamTheme,
+    _    => _latinTheme,
+  };
+
+  // ── Latin theme (en) — Plus Jakarta Sans + Inter ───────────────────────
+
+  static final TextTheme _latinTheme = TextTheme(
+    displayLarge:   displayLarge,
+    displayMedium:  displayMedium,
+    displaySmall:   displaySmall,
+    headlineLarge:  headlineLarge,
+    headlineMedium: headlineMedium,
+    headlineSmall:  headlineSmall,
+    titleLarge:     titleLarge,
+    titleMedium:    titleMedium,
+    titleSmall:     titleSmall,
+    bodyLarge:      bodyLarge,
+    bodyMedium:     bodyMedium,
+    bodySmall:      bodySmall,
+    labelLarge:     labelLarge,
+    labelMedium:    labelMedium,
+    labelSmall:     labelSmall,
+  );
+
+  // ── Indic themes — single Noto Sans family per script ──────────────────
+  // Noto Sans families cover all weight/size roles in a single typeface,
+  // so we use GoogleFonts.*TextTheme() which applies the font to every
+  // TextTheme slot, then override sizes to match our type scale.
+
+  static final TextTheme _notoSansDevanagariTheme =
+      GoogleFonts.notoSansDevanagariTextTheme(_latinTheme);
+
+  static final TextTheme _notoSansTeluguTheme =
+      GoogleFonts.notoSansTeluguTextTheme(_latinTheme);
+
+  static final TextTheme _notoSansTamilTheme =
+      GoogleFonts.notoSansTamilTextTheme(_latinTheme);
+
+  static final TextTheme _notoSansKannadaTheme =
+      GoogleFonts.notoSansKannadaTextTheme(_latinTheme);
+
+  static final TextTheme _notoSansMalayalamTheme =
+      GoogleFonts.notoSansMalayalamTextTheme(_latinTheme);
+
+  // ── Latin style getters (used to build _latinTheme above) ─────────────
+
   // ── Display ───────────────────────────────────────────────────────
   static TextStyle get displayLarge => GoogleFonts.plusJakartaSans(
         fontSize: _TypeScale.displayLarge,

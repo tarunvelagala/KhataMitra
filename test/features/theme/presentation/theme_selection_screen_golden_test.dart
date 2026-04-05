@@ -13,21 +13,18 @@ void main() {
 
   group('ThemeSelectionScreen Golden Tests', () {
     Widget buildTestScreen(ThemeMode mode) {
-      final appTheme = mode == ThemeMode.light ? AppTheme.light : AppTheme.dark;
-      
+      const locale = Locale('en');
+      // Use our real ColorScheme but default fonts to avoid GoogleFonts
+      // network/asset exceptions in tests.
       return ProviderScope(
         child: MaterialApp(
-          // Create a new ThemeData using our real ColorScheme but default fonts
-          // to avoid GoogleFonts network/asset exceptions in tests.
           theme: ThemeData(
             useMaterial3: true,
-            colorScheme: appTheme.colorScheme,
-            brightness: appTheme.brightness,
+            colorScheme: AppTheme.light(locale).colorScheme,
           ),
           darkTheme: ThemeData(
             useMaterial3: true,
-            colorScheme: AppTheme.dark.colorScheme,
-            brightness: Brightness.dark,
+            colorScheme: AppTheme.dark(locale).colorScheme,
           ),
           themeMode: mode,
           debugShowCheckedModeBanner: false,

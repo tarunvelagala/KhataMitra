@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:khata_pro/l10n/app_localizations.dart';
 
 import 'core/routes/app_router.dart';
@@ -8,6 +9,10 @@ import 'features/language/application/language_provider.dart';
 import 'features/theme/application/theme_provider.dart';
 
 void main() {
+  // Disable runtime font fetching — fonts must be bundled as assets.
+  // Without this, google_fonts throws unhandled exceptions on devices
+  // without internet access (e.g. emulators with no network).
+  GoogleFonts.config.allowRuntimeFetching = false;
   runApp(const ProviderScope(child: KhataMitraApp()));
 }
 
@@ -21,10 +26,10 @@ class KhataMitraApp extends ConsumerWidget {
     final locale = ref.watch(languageProvider);
 
     return MaterialApp.router(
-      title: 'KhataMitra',
+      title: 'KhataPro',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      theme: AppTheme.light(locale),
+      darkTheme: AppTheme.dark(locale),
       themeMode: themeMode,
       locale: locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

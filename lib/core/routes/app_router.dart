@@ -10,7 +10,7 @@ part 'app_router.g.dart';
 @riverpod
 GoRouter appRouter(Ref ref) {
   return GoRouter(
-    initialLocation: '/theme',
+    initialLocation: '/language',
     routes: [
       GoRoute(
         path: '/theme',

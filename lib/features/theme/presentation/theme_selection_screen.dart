@@ -204,7 +204,7 @@ class ThemeSelectionScreen extends ConsumerWidget {
                   ),
                 ),
                 child: ElevatedButton(
-                  onPressed: () => context.go('/language'),
+                  onPressed: () => context.go('/login'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: cs.primary,
                     foregroundColor: cs.onPrimary,

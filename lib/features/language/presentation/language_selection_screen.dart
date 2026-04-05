@@ -144,7 +144,7 @@ class LanguageSelectionScreen extends ConsumerWidget {
                 // HTML line 158: bg-primary text-on-primary font-headline font-bold
                 //                text-lg rounded-full shadow-lg shadow-primary/20 h-14
                 child: ElevatedButton(
-                  onPressed: () => context.go('/login'),
+                  onPressed: () => context.go('/theme'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: cs.primary,
                     foregroundColor: cs.onPrimary,

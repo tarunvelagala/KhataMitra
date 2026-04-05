@@ -4,26 +4,15 @@ import 'app_colors.dart';
 import 'app_text_styles.dart';
 
 abstract final class AppTheme {
-  // ── Shared TextTheme ───────────────────────────────────────────────────
-  // Cached as a static field so the same instances are reused on every
-  // theme rebuild, avoiding google_fonts lerp assertion errors.
-  static final TextTheme _textTheme = TextTheme(
-    displayLarge: AppTextStyles.displayLarge,
-    displayMedium: AppTextStyles.displayMedium,
-    displaySmall: AppTextStyles.displaySmall,
-    headlineLarge: AppTextStyles.headlineLarge,
-    headlineMedium: AppTextStyles.headlineMedium,
-    headlineSmall: AppTextStyles.headlineSmall,
-    titleLarge: AppTextStyles.titleLarge,
-    titleMedium: AppTextStyles.titleMedium,
-    titleSmall: AppTextStyles.titleSmall,
-    bodyLarge: AppTextStyles.bodyLarge,
-    bodyMedium: AppTextStyles.bodyMedium,
-    bodySmall: AppTextStyles.bodySmall,
-    labelLarge: AppTextStyles.labelLarge,
-    labelMedium: AppTextStyles.labelMedium,
-    labelSmall: AppTextStyles.labelSmall,
-  );
+  // ── Locale-aware TextTheme ─────────────────────────────────────────────
+  // Returns a TextTheme with the correct font family for the active locale.
+  // Results are cached by language code to avoid rebuilding on every render.
+  static final Map<String, TextTheme> _textThemeCache = {};
+
+  static TextTheme _textThemeFor(Locale locale) => _textThemeCache.putIfAbsent(
+        locale.languageCode,
+        () => AppTextStyles.forLocale(locale),
+      );
 
   // ── Color schemes ──────────────────────────────────────────────────────
   // Exposed as consts so unit tests can verify color tokens without
@@ -117,11 +106,11 @@ abstract final class AppTheme {
 
   // ── ThemeData ──────────────────────────────────────────────────────────
 
-  static final ThemeData light = ThemeData(
+  static ThemeData light(Locale locale) => ThemeData(
     useMaterial3: true,
     colorScheme: lightColorScheme,
     scaffoldBackgroundColor: AppColors.background,
-    textTheme: _textTheme,
+    textTheme: _textThemeFor(locale),
     cardTheme: _cardTheme(AppColors.surfaceContainerLowest),
     elevatedButtonTheme: _elevatedButtonTheme(
       bg: AppColors.primary,
@@ -142,11 +131,11 @@ abstract final class AppTheme {
     dividerTheme: _dividerTheme(AppColors.outlineVariant),
   );
 
-  static final ThemeData dark = ThemeData(
+  static ThemeData dark(Locale locale) => ThemeData(
     useMaterial3: true,
     colorScheme: darkColorScheme,
     scaffoldBackgroundColor: AppColors.darkBackground,
-    textTheme: _textTheme,
+    textTheme: _textThemeFor(locale),
     cardTheme: _cardTheme(AppColors.darkSurfaceContainerLowest),
     elevatedButtonTheme: _elevatedButtonTheme(
       bg: AppColors.darkPrimary,
