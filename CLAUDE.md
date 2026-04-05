@@ -50,6 +50,7 @@ Before writing any code, ask: does this change satisfy all of the above? Specifi
 - [ ] Feature doesn't reach into another feature's internals
 - [ ] `flutter analyze` passes with zero warnings
 - [ ] New public API has `///` doc comments
+- [ ] Screen visually matches its `stitch_screens/` HTML reference (layout, colors, spacing, components)
 
 ## Commands
 
@@ -148,6 +149,90 @@ All state uses `flutter_riverpod` with code generation:
 - `AppListTile` — Transaction rows with avatar, amount (semantic color), date
 
 **Import convention**: `import 'package:khata_mitra/core/widgets.dart';` (barrel export)
+
+### Stitch Design Fidelity — Non-Negotiable
+
+**Every screen implementation must match its `stitch_screens/` HTML reference pixel-for-pixel in structure, color roles, spacing, and component behaviour.** The Stitch HTML files are the source of truth for visual output; DESIGN.md is the system that produces them.
+
+#### Mapping: screens ↔ references
+
+| Route | Dart file | Stitch HTML |
+|-------|-----------|-------------|
+| `/theme` | `features/theme/presentation/theme_selection_screen.dart` | `stitch_screens/9_Theme_Selection.html` |
+| `/language` | `features/language/presentation/language_selection_screen.dart` | `stitch_screens/11_Language_Selection.html` |
+| `/login` | `features/auth/presentation/login_screen.dart` | `stitch_screens/12_Login_OTP_Verification.html` |
+| `/shop-details` | `features/onboarding/presentation/shop_name_screen.dart` | `stitch_screens/10_Shop_Name_Onboarding.html` |
+| `/dashboard` | `features/dashboard/presentation/dashboard_screen.dart` | `stitch_screens/8_Main_Dashboard.html` |
+| `/ledger/:id` | `features/ledger/presentation/customer_ledger_screen.dart` | `stitch_screens/7_Customer_Ledger.html` |
+| `/add-customer` | `features/ledger/presentation/add_customer_modal.dart` | `stitch_screens/6_Add_Customer_Modal.html` |
+| `/record-payment` | `features/ledger/presentation/record_payment_sheet.dart` | `stitch_screens/4_Record_Payment_Sheet.html` |
+| `/record-credit` | `features/ledger/presentation/record_credit_sheet.dart` | `stitch_screens/5_Record_Credit_Sheet.html` |
+| `/reminder` | `features/ledger/presentation/reminder_composer.dart` | `stitch_screens/3_Reminder_Composer.html` |
+| `/settings` | `features/settings/presentation/settings_screen.dart` | `stitch_screens/2_Settings.html` |
+| `/catalog` | `features/catalog/presentation/catalog_screen.dart` | `stitch_screens/1_My_Catalog.html` |
+
+#### Before implementing any screen
+
+1. **Open the HTML reference** for that screen in `stitch_screens/`.
+2. **Cross-reference DESIGN.md** for the system rules behind each element.
+3. Map every visual element to a `ColorScheme` token, `TextTheme` role, and `AppDimensions` constant **before writing any Dart**.
+
+#### Rules for every implemented screen
+
+**Layout & spacing**
+- Match the HTML's section structure exactly: header block → content area → sticky footer (if present).
+- All padding/gap values must come from `AppDimensions` — no inline numbers. If a value is missing from `AppDimensions`, add it there first with a doc comment.
+- Horizontal screen padding: `AppDimensions.screenPaddingH` (24 px). Vertical header gap: `AppDimensions.headerGapV` (64 px).
+
+**Colors — always token-driven, never hardcoded**
+- Selected/active state backgrounds: use `cs.primaryFixed` (Light Navy `#D6E3FF`), **not** `cs.primary` (Navy `#004D99`).
+- Selected card tint overlay: `cs.primaryFixed.withValues(alpha: 0.20)`.
+- Unselected card background: `cs.surfaceContainerLowest`.
+- Icon containers (unselected): `cs.primaryContainer`; (selected): `Colors.white` on a primary-bg card.
+- Destructive / debit amounts: `cs.tertiary`. Credit / income amounts: `cs.secondary`.
+- Footer gradient: `[cs.surface, cs.surface.withValues(alpha: 0.9), cs.surface.withValues(alpha: 0.0)]`.
+
+**Typography**
+- Screen title (e.g. "KhataMitra"): `textTheme.headlineSmall` — Plus Jakarta Sans w800.
+- Section subtitles: `textTheme.bodyMedium` — Inter w400.
+- Card primary label: `textTheme.titleMedium` — Inter w600.
+- Card secondary label / metadata: `textTheme.bodySmall` — Inter w400.
+- Amount figures (ledger): `textTheme.titleLarge` — Plus Jakarta Sans w700.
+- Never call `.copyWith(fontSize: ...)` or `.copyWith(fontFamily: ...)` — only `.copyWith(color: ...)` or `.copyWith(fontWeight: ...)` is permitted.
+
+**Components**
+- Primary action button: `ElevatedButton` — Navy bg, white text, 56 px height, `StadiumBorder()`, full-width.
+- Selected state indicator: circular Navy container (`cs.primary`, 24 px) with white `Icons.check` (16 px).
+- Language/theme card: `InkWell` wrapping an `AnimatedContainer` — 16 px radius, 2 px Navy border when selected.
+- Input fields: Use `AppTextField` — never raw `TextField` or `TextFormField` in screen code.
+- List rows: Use `AppListTile` — never raw `ListTile` in feature screens.
+- Badges / chips: Use `AppBadge`.
+
+**Dark mode**
+- Every color must resolve correctly in both `ThemeMode.light` and `ThemeMode.dark`.
+- Test both modes before committing. Never conditionally hardcode a color for one mode only.
+
+**Motion**
+- Card selection transitions: `AnimatedContainer(duration: Duration(milliseconds: 200), curve: Curves.easeOut)`.
+- Show/hide transitions (checkmarks, overlays): `AnimatedSwitcher(duration: Duration(milliseconds: 200))`.
+- No motion longer than 300 ms for micro-interactions.
+
+#### Known current inconsistencies (fix before shipping)
+
+| Screen | Issue | Fix |
+|--------|-------|-----|
+| `theme_selection_screen.dart:235` | Selected card bg uses `cs.primary` (Navy) instead of `cs.primaryFixed` (Light Navy) | Change `selectedCardBg = cs.primary` → `cs.primaryFixed`; update label colors accordingly |
+| `language_selection_screen.dart:139` | Selected card tint uses `cs.primaryContainer` base instead of `cs.primaryFixed` | Change to `cs.primaryFixed.withValues(alpha: 0.20)` |
+| Both screens | Inline `EdgeInsets.fromLTRB(24, 64, 24, ...)` — not using `AppDimensions` tokens | Add `screenPaddingH`, `headerGapV`, `footerPaddingV` to `AppDimensions` and reference them |
+
+#### Design fidelity checklist (add to every PR)
+
+- [ ] Opened the `stitch_screens/` HTML reference for every touched screen
+- [ ] Selected-state colors use `cs.primaryFixed` / `cs.primaryFixed.withValues(alpha:)`, not `cs.primary`
+- [ ] All padding/spacing values reference `AppDimensions` constants
+- [ ] Typography uses only `textTheme` roles — no `.copyWith(fontSize:)` or `.copyWith(fontFamily:)`
+- [ ] Dark mode verified (both themes render correctly)
+- [ ] No raw `TextField`, `ListTile`, or `ElevatedButton` in feature screen code — uses core widgets
 
 ### Localization
 
