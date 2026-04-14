@@ -1,4 +1,4 @@
-package com.example.khata_pro
+package com.vtkr.khata_pro
 
 import io.flutter.embedding.android.FlutterActivity
 
