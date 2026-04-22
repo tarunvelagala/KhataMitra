@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^3.3.1
   go_router: ^17.1.0
-  google_fonts: ^8.0.2
   intl: ^0.20.2
   riverpod_annotation: ^4.0.2
 
@@ -21,7 +20,25 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
   generate: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/icon_light.png"
+  image_path_ios: "assets/icons/icon_light.png"
+  image_path_ios_dark_transparent: "assets/icons/icon_dark_transparent.png"
+  image_path_ios_tinted_grayscale: "assets/icons/icon_tinted.png"
+
+  # Adaptive Icon Settings
+  adaptive_icon_background: "#FAF9FD"
+  adaptive_icon_foreground: "assets/icons/icon_foreground.png"
+  adaptive_icon_foreground_dark: "assets/icons/icon_foreground_dark.png"
+  adaptive_icon_background_dark: "#2F3033"
+
+  # Monochrome / Themed Icon Settings
+  adaptive_icon_monochrome: "assets/icons/icon_monochrome.png"

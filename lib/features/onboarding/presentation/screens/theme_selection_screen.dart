@@ -308,11 +308,11 @@ class _ThemePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg     = isDark ? const Color(0xFF111111) : const Color(0xFFF8F9FF);
-    final surf   = isDark ? const Color(0xFF1E1E1E) : Colors.white;
-    final text1  = isDark ? const Color(0xFFE2E2E9) : const Color(0xFF1A1C1C);
-    final text2  = isDark ? const Color(0xFF8E8E9A) : const Color(0xFF6B7280);
-    final accent = isDark ? const Color(0xFFA9C7FF) : const Color(0xFF004D99);
+    final bg     = isDark ? const Color(0xFF121316) : const Color(0xFFFAF9FD);
+    final surf   = isDark ? const Color(0xFF1E2023) : Colors.white;
+    final text1  = isDark ? const Color(0xFFE3E2E6) : const Color(0xFF1A1B1E);
+    final text2  = isDark ? const Color(0xFF8E9099) : const Color(0xFF74777F);
+    final accent = isDark ? const Color(0xFFA9C7FF) : const Color(0xFF1565C0);
 
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(

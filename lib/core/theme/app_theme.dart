@@ -6,7 +6,7 @@ import 'app_text_styles.dart';
 abstract final class AppTheme {
   // ── Shared TextTheme ───────────────────────────────────────────────────
   // Cached as a static field so the same instances are reused on every
-  // theme rebuild, avoiding google_fonts lerp assertion errors.
+  // theme rebuild.
   static final TextTheme _textTheme = TextTheme(
     displayLarge: AppTextStyles.displayLarge,
     displayMedium: AppTextStyles.displayMedium,
@@ -27,7 +27,7 @@ abstract final class AppTheme {
 
   // ── Color schemes ──────────────────────────────────────────────────────
   // Exposed as consts so unit tests can verify color tokens without
-  // constructing ThemeData (which loads google_fonts).
+  // constructing ThemeData.
 
   static const ColorScheme lightColorScheme = ColorScheme(
     brightness: Brightness.light,

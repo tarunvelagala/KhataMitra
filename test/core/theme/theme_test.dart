@@ -10,15 +10,15 @@ void main() {
 
   group('AppColors', () {
     test('primary color has correct hex value', () {
-      expect(AppColors.primary, const Color(0xFF004D99));
+      expect(AppColors.primary, const Color(0xFF1565C0));
     });
 
     test('secondary (credit/income) is green', () {
-      expect(AppColors.secondary, const Color(0xFF1B6D24));
+      expect(AppColors.secondary, const Color(0xFF2E7D32));
     });
 
     test('tertiary (debit/expense) is red', () {
-      expect(AppColors.tertiary, const Color(0xFFA00312));
+      expect(AppColors.tertiary, const Color(0xFFC62828));
     });
 
     test('onPrimary is white', () {
@@ -47,8 +47,6 @@ void main() {
     });
   });
 
-  // AppTextStyles delegates to google_fonts which requires bundled .ttf assets
-  // or live network access — neither is available in unit tests.
   // Typography token values (sizes, weights, spacing) are verified here using
   // the same constants AppTextStyles uses, without constructing a TextStyle.
   group('AppTextStyles token values', () {
@@ -90,7 +88,7 @@ void main() {
 
   group('AppTheme', () {
     // Use lightColorScheme directly — avoids constructing ThemeData which
-    // triggers google_fonts network requests via the TextTheme.
+    // requires the full TextTheme.
     const scheme = AppTheme.lightColorScheme;
 
     test('brightness is light', () {

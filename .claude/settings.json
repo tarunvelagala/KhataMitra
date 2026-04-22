@@ -1,4 +1,72 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(flutter *)",
+      "Bash(dart *)",
+      "Bash(flutter_launcher_icons*)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(python3 *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && dart analyze 2>&1 | tail -5",
+            "timeout": 60,
+            "statusMessage": "Linting..."
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && dart analyze",
+            "timeout": 60,
+            "statusMessage": "Pre-commit: dart analyze..."
+          },
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && flutter test",
+            "timeout": 120,
+            "statusMessage": "Pre-commit: flutter test..."
+          },
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && flutter build apk --debug 2>&1 | tail -3",
+            "timeout": 300,
+            "statusMessage": "Pre-commit: Android build..."
+          },
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && flutter build ios --no-codesign 2>&1 | tail -3",
+            "timeout": 300,
+            "statusMessage": "Pre-commit: iOS build..."
+          },
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && .claude/hooks/design-review.sh",
+            "timeout": 30,
+            "statusMessage": "Pre-commit: design review..."
+          }
+        ]
+      }
+    ]
+  },
   "mcpServers": {
     "dart": {
       "type": "stdio",
