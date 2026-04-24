@@ -27,6 +27,17 @@
             "statusMessage": "Linting..."
           }
         ]
+      },
+      {
+        "matcher": "Bash(dart run flutter_launcher_icons*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '<?xml version=\"1.0\" encoding=\"utf-8\"?>\\n<resources>\\n    <color name=\"ic_launcher_background\">#FAF9FD</color>\\n</resources>\\n' > \"$CLAUDE_PROJECT_DIR/android/app/src/main/res/values/colors.xml\"",
+            "timeout": 10,
+            "statusMessage": "Fixing colors.xml..."
+          }
+        ]
       }
     ],
     "PreToolUse": [

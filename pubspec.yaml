@@ -20,7 +20,21 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
   generate: true
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+  image_path_ios: "assets/icons/app_icon.png"
+  image_path_ios_dark_transparent: "assets/icons/app_icon_dark_transparent.png"
+  image_path_ios_tinted_grayscale: "assets/icons/app_icon_tinted.png"
+  adaptive_icon_background: "#FAF9FD"
+  adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+  adaptive_icon_foreground_dark: "assets/icons/app_icon_foreground_dark.png"
+  adaptive_icon_background_dark: "#2F3033"
+  adaptive_icon_monochrome: "assets/icons/app_icon_monochrome.png"
