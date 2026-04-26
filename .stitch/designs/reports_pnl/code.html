@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>P&amp;L Report - KhataPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#93000e",
+                        "secondary-container": "#a0f399",
+                        "surface-variant": "#e3e2e6",
+                        "surface-container-high": "#e8e8ec",
+                        "on-surface": "#1a1c1e",
+                        "on-surface-variant": "#424752",
+                        "surface-container-low": "#f4f3f7",
+                        "on-error-container": "#93000a",
+                        "primary": "#004d99",
+                        "surface-bright": "#faf9fd",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb4ac",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#a9c7ff",
+                        "tertiary-fixed": "#ffdad6",
+                        "on-tertiary-fixed": "#410003",
+                        "on-secondary-fixed": "#002204",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffddd9",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#a00312",
+                        "surface-container-highest": "#e3e2e6",
+                        "secondary": "#1b6d24",
+                        "inverse-surface": "#2f3033",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005312",
+                        "surface-tint": "#005db7",
+                        "surface-container": "#eeedf1",
+                        "outline": "#727783",
+                        "on-primary-fixed": "#001b3d",
+                        "outline-variant": "#c2c6d4",
+                        "on-secondary-container": "#217128",
+                        "inverse-on-surface": "#f1f0f4",
+                        "on-background": "#1a1c1e",
+                        "primary-container": "#1565c0",
+                        "on-primary-fixed-variant": "#00468c",
+                        "surface": "#faf9fd",
+                        "background": "#faf9fd",
+                        "on-primary-container": "#dae5ff",
+                        "secondary-fixed-dim": "#88d982",
+                        "tertiary-container": "#c42627",
+                        "secondary-fixed": "#a3f69c",
+                        "surface-dim": "#dad9dd",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "display": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#FAF9FD] flex items-center justify-between px-6 py-4 w-full fixed top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#E8E8EC] transition-colors p-2 rounded-full active:opacity-80 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#1565C0]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-['Inter'] font-medium tracking-tight text-slate-900 text-lg leading-tight">P&amp;L Report</h1>
+<span class="text-xs font-medium text-on-surface-variant">April 2026</span>
+</div>
+</div>
+<button class="hover:bg-[#E8E8EC] transition-colors p-2 rounded-full active:opacity-80 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#1565C0]" data-icon="share">share</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto">
+<!-- Net P&L Banner (Hero Component) -->
+<section class="mb-10">
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-[0_8px_24px_rgba(26,28,30,0.06)] relative overflow-hidden group">
+<div class="relative z-10 flex flex-col gap-2">
+<span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase">NET PROFIT</span>
+<div class="flex items-center justify-between">
+<span class="text-4xl font-extrabold tracking-tight text-primary">₹8,300</span>
+<div class="bg-secondary-container/30 p-3 rounded-2xl">
+<span class="material-symbols-outlined text-secondary font-bold text-3xl" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Artistic background element -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+</section>
+<!-- Income Section -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-6 border-l-4 border-secondary pl-4">
+<h2 class="text-sm font-bold tracking-wider text-on-surface uppercase">INCOME</h2>
+<span class="text-lg font-bold text-secondary">₹12,500</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex justify-between items-center hover:bg-surface-container-highest transition-colors cursor-default">
+<span class="font-medium text-on-surface">Customer Payments</span>
+<span class="text-on-surface-variant font-semibold">₹8,500</span>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex justify-between items-center hover:bg-surface-container-highest transition-colors cursor-default">
+<span class="font-medium text-on-surface">Sales Revenue</span>
+<span class="text-on-surface-variant font-semibold">₹3,000</span>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex justify-between items-center hover:bg-surface-container-highest transition-colors cursor-default">
+<span class="font-medium text-on-surface">Other Income</span>
+<span class="text-on-surface-variant font-semibold">₹1,000</span>
+</div>
+</div>
+</section>
+<!-- Divider with Tonal Shift -->
+<div class="h-[1px] bg-outline-variant/15 my-10"></div>
+<!-- Expense Section -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6 border-l-4 border-tertiary pl-4">
+<h2 class="text-sm font-bold tracking-wider text-on-surface uppercase">EXPENSES</h2>
+<span class="text-lg font-bold text-tertiary">₹4,200</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex justify-between items-center hover:bg-surface-container-highest transition-colors cursor-default">
+<span class="font-medium text-on-surface">Supplier Payments</span>
+<span class="text-on-surface-variant font-semibold">₹2,500</span>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex justify-between items-center hover:bg-surface-container-highest transition-colors cursor-default">
+<span class="font-medium text-on-surface">Operating Costs</span>
+<span class="text-on-surface-variant font-semibold">₹1,200</span>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex justify-between items-center hover:bg-surface-container-highest transition-colors cursor-default">
+<span class="font-medium text-on-surface">Miscellaneous</span>
+<span class="text-on-surface-variant font-semibold">₹500</span>
+</div>
+</div>
+</section>
+<!-- Aesthetic Imagery -->
+<div class="mb-12 rounded-3xl overflow-hidden h-32 relative">
+<img alt="Financial analysis background" class="w-full h-full object-cover opacity-80" data-alt="Abstract architectural photography with clean lines and soft blue tones reflecting a professional corporate and financial aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn2lNQShPN7yCnC1ND1GWPcqbetaL8h8_i-uI2sDbnZeg-JrDo-tJjIJKpWVP87m89Od3hu4GtdbFjft_tpy-tdR4Qz6TcCXgTw8QfKjslV0e85AMX3e5lsH34xW66SIQAtjOk5v1BS34H2IIsdi0HD7KlI1GxVDDv1dJRnPkxsAw8PTtXenmgOTAuI0ScgVKdf1mvnzI6UWuA7f2MvdYuBZFVAnQHLGIMx8_m84YXu7RhmAKHzH6fyZ8loT5w4T1oX9bQgFSRlzk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-6 flex justify-center pointer-events-none">
+<button class="pointer-events-auto bg-surface-container-lowest border border-primary/20 px-10 py-3.5 rounded-full flex items-center gap-3 shadow-[0_8px_24px_rgba(26,28,30,0.08)] hover:bg-primary hover:text-white transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="font-bold tracking-tight text-primary group-hover:text-white transition-colors">Export PDF</span>
+</button>
+</div>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center px-4 pb-6 pt-3 bg-[#F4F3F7] rounded-t-[24px] shadow-[0_-4px_12px_rgba(26,28,30,0.04)] md:hidden">
+<div class="flex flex-col items-center justify-center text-slate-500 px-5 py-2 hover:text-[#1565C0] transition-colors cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-5 py-2 hover:text-[#1565C0] transition-colors cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] text-[11px] font-medium">Ledger</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-white text-[#1565C0] rounded-2xl px-5 py-2 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Inter'] text-[11px] font-semibold">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-5 py-2 hover:text-[#1565C0] transition-colors cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-[11px] font-medium">Settings</span>
+</div>
+</nav>
+</body></html>

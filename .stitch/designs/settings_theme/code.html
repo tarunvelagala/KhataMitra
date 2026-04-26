@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Theme Selection - KhataPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dad9dd",
+                        "surface-tint": "#005db7",
+                        "on-secondary-fixed": "#002204",
+                        "surface-container": "#eeedf1",
+                        "on-tertiary-fixed-variant": "#93000e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1c1e",
+                        "surface-container-low": "#f4f3f7",
+                        "on-secondary-fixed-variant": "#005312",
+                        "outline": "#74777F",
+                        "inverse-surface": "#2f3033",
+                        "outline-variant": "#c2c6d4",
+                        "secondary-fixed-dim": "#88d982",
+                        "on-primary-fixed": "#001b3d",
+                        "primary": "#004d99",
+                        "surface-container-high": "#e8e8ec",
+                        "on-surface": "#1a1c1e",
+                        "on-surface-variant": "#424752",
+                        "surface-variant": "#e3e2e6",
+                        "on-tertiary-container": "#ffddd9",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#a3f69c",
+                        "income-container": "#A3F69C",
+                        "error-red": "#BA1A1A",
+                        "on-primary-fixed-variant": "#00468c",
+                        "surface-container-highest": "#e3e2e6",
+                        "primary-fixed": "#d6e3ff",
+                        "on-expense-container": "#410003",
+                        "tertiary-fixed-dim": "#ffb4ac",
+                        "inverse-primary": "#a9c7ff",
+                        "expense-container": "#FFDAD6",
+                        "on-income-container": "#002204",
+                        "background": "#faf9fd",
+                        "surface": "#faf9fd",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#c42627",
+                        "secondary-container": "#a0f399",
+                        "on-secondary-container": "#217128",
+                        "primary-container": "#1565c0",
+                        "inverse-on-surface": "#f1f0f4",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#410003",
+                        "surface-bright": "#faf9fd",
+                        "tertiary": "#a00312",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary": "#1b6d24",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-primary-container": "#dae5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "input-h": "16px",
+                        "btn-h": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "section-gap": "32px",
+                        "input-v": "20px",
+                        "btn-v": "20px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "screen-margin": "24px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "work-sans": ["Work Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex items-center w-full px-6 h-16 bg-slate-50 border-b border-slate-200 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors duration-200 text-slate-600">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Work_Sans'] font-bold text-lg text-blue-700">Theme Selection</h1>
+</div>
+</header>
+<main class="flex-1 px-screen-margin py-lg max-w-2xl mx-auto w-full">
+<!-- Subtitle -->
+<p class="font-work-sans text-body-md text-on-surface-variant mb-section-gap">
+            Choose how KhataPro looks. Takes effect immediately.
+        </p>
+<div class="flex flex-col gap-md">
+<!-- Theme Card: Light (Selected) -->
+<div class="relative bg-surface-container-lowest border-2 border-primary rounded-xl p-md flex items-center gap-md cursor-pointer transition-all duration-200 shadow-sm">
+<div class="absolute top-3 right-3 bg-primary text-on-primary rounded-full w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[40px] text-primary" data-icon="light_mode">light_mode</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-md text-on-surface font-bold">Light</span>
+<span class="text-body-sm text-on-surface-variant">Bright and clean interface</span>
+</div>
+</div>
+<!-- Theme Card: Dark (Unselected) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md cursor-pointer hover:bg-surface-container-low transition-all duration-200">
+<div class="w-16 h-16 bg-surface-container rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[40px] text-on-surface-variant" data-icon="dark_mode">dark_mode</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-md text-on-surface font-semibold">Dark</span>
+<span class="text-body-sm text-on-surface-variant">Easy on the eyes at night</span>
+</div>
+</div>
+<!-- Theme Card: System Default (Unselected) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md cursor-pointer hover:bg-surface-container-low transition-all duration-200">
+<div class="w-16 h-16 bg-surface-container rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[40px] text-on-surface-variant" data-icon="brightness_6">brightness_6</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-md text-on-surface font-semibold">System Default</span>
+<span class="text-body-sm text-on-surface-variant">Follows your device setting</span>
+</div>
+</div>
+</div>
+<!-- Helper Text -->
+<div class="mt-section-gap flex items-center justify-center gap-2 px-md text-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="info">info</span>
+<p class="text-body-sm text-on-surface-variant">
+                Changes apply instantly without restarting.
+            </p>
+</div>
+</main>
+<!-- Bottom Navigation Mock (Only if top-level, but here we provide context) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-white border-t border-slate-200">
+<div class="flex flex-col items-center justify-center text-slate-500 px-5 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Work_Sans'] text-[12px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-5 py-1">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-['Work_Sans'] text-[12px] font-medium">Transactions</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-5 py-1">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Work_Sans'] text-[12px] font-medium">Customers</span>
+</div>
+<!-- Settings is Active for this section -->
+<div class="flex flex-col items-center justify-center bg-blue-100 text-blue-800 rounded-2xl px-5 py-1">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-['Work_Sans'] text-[12px] font-medium">Settings</span>
+</div>
+</nav>
+</body></html>

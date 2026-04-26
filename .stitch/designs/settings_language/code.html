@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KhataPro - Select Language</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#424752",
+                    "background": "#faf9fd",
+                    "surface-container-low": "#F4F3F7",
+                    "secondary-fixed": "#a3f69c",
+                    "on-secondary-fixed-variant": "#005312",
+                    "outline-variant": "#c2c6d4",
+                    "primary-container": "#1565c0",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002204",
+                    "surface": "#faf9fd",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#410003",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary-container": "#217128",
+                    "surface-container": "#EFEDF1",
+                    "on-primary-fixed": "#001b3d",
+                    "error": "#ba1a1a",
+                    "expense-container": "#FFDAD6",
+                    "secondary-fixed-dim": "#88d982",
+                    "tertiary-container": "#c42627",
+                    "surface-bright": "#faf9fd",
+                    "inverse-primary": "#a9c7ff",
+                    "inverse-surface": "#2f3033",
+                    "on-primary-container": "#dae5ff",
+                    "primary": "#004d99",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdad6",
+                    "on-surface": "#1a1c1e",
+                    "on-primary-fixed-variant": "#00468c",
+                    "surface-dim": "#dad9dd",
+                    "surface-variant": "#e3e2e6",
+                    "tertiary-fixed-dim": "#ffb4ac",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-tertiary-container": "#ffddd9",
+                    "on-background": "#1a1c1e",
+                    "on-income-container": "#002204",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e3e2e6",
+                    "inverse-on-surface": "#f1f0f4",
+                    "on-tertiary-fixed-variant": "#93000e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e8e8ec",
+                    "outline": "#74777F",
+                    "on-expense-container": "#410003",
+                    "secondary-container": "#a0f399",
+                    "secondary": "#1b6d24",
+                    "on-error": "#ffffff",
+                    "tertiary": "#a00312",
+                    "surface-tint": "#005db7",
+                    "income-container": "#A3F69C",
+                    "error-red": "#BA1A1A"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "screen-margin": "24px",
+                    "xs": "4px",
+                    "input-h": "16px",
+                    "btn-v": "20px",
+                    "section-gap": "32px",
+                    "input-v": "20px",
+                    "base": "8px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "btn-h": "24px",
+                    "lg": "24px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "display-sm": ["Work Sans"],
+                    "label-sm": ["Work Sans"],
+                    "title-lg": ["Work Sans"],
+                    "title-md": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "display-lg": ["Work Sans"],
+                    "body-md": ["Work Sans"],
+                    "headline-sm": ["Work Sans"],
+                    "label-md": ["Work Sans"],
+                    "label-lg": ["Work Sans"],
+                    "headline-lg": ["Work Sans"],
+                    "title-sm": ["Work Sans"],
+                    "headline-md": ["Work Sans"],
+                    "display-md": ["Work Sans"],
+                    "body-sm": ["Work Sans"]
+            },
+            "fontSize": {
+                    "display-sm": ["36px", {"lineHeight": "44px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "1px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["500", {"lineHeight": "16px", "letterSpacing": "0.5px"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.5px", "fontWeight": "800"}],
+                    "title-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "display-md": ["45px", {"lineHeight": "52px", "fontWeight": "400"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.4px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #faf9fd;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen text-on-surface">
+<!-- Top App Bar - Shared Component Mapping -->
+<header class="sticky top-0 z-50 bg-surface flex items-center w-full px-6 py-4 border-none">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#EFEDF1] transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[#1565C0]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Work_Sans'] font-bold text-[22px] leading-[28px] text-[#1565C0]">Select Language</h1>
+</div>
+</header>
+<main class="flex-1 w-full max-w-2xl mx-auto px-screen-margin pb-32">
+<!-- Subtitle -->
+<div class="py-md">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Choose your preferred language. Changes take effect immediately.
+            </p>
+</div>
+<!-- Language Grid -->
+<div class="grid grid-cols-2 gap-md mt-sm">
+<!-- Card 1 (English) - SELECTED -->
+<button class="relative bg-surface-container-lowest p-lg rounded-xl border-2 border-[#1565C0] flex flex-col items-center justify-center gap-xs transition-all duration-200 active:scale-[0.98]">
+<div class="absolute top-2 right-2 flex items-center justify-center w-6 h-6 bg-[#1565C0] rounded-full">
+<span class="material-symbols-outlined text-white text-[16px]" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-title-md text-title-md font-bold text-on-surface">English</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">EN</span>
+</button>
+<!-- Card 2 (Hindi) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">हिन्दी</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hindi</span>
+</button>
+<!-- Card 3 (Bengali) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">বাংলা</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bengali</span>
+</button>
+<!-- Card 4 (Marathi) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">मराठी</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Marathi</span>
+</button>
+<!-- Card 5 (Kannada) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">ಕನ್ನಡ</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kannada</span>
+</button>
+<!-- Card 6 (Tamil) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">தமிழ்</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tamil</span>
+</button>
+<!-- Card 7 (Malayalam) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">മലയാളം</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Malayalam</span>
+</button>
+<!-- Card 8 (Telugu) -->
+<button class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col items-center justify-center gap-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]">
+<span class="font-headline-sm text-headline-sm text-on-surface">తెలుగు</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Telugu</span>
+</button>
+</div>
+<!-- Illustration / Empty State Visual -->
+<div class="mt-xl flex flex-col items-center">
+<div class="w-24 h-24 bg-primary-container/10 rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[48px] text-primary" data-icon="translate">translate</span>
+</div>
+</div>
+</main>
+<!-- Footer Area -->
+<footer class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-md px-screen-margin py-lg border-t border-outline-variant/30 flex flex-col items-center gap-sm">
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center max-w-xs">
+            The app will restart to apply the language change.
+        </p>
+<!-- Primary Action Button (Standard Pattern) -->
+<button class="w-full max-w-sm bg-primary text-on-primary py-4 px-btn-h rounded-xl font-title-sm text-title-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-sm">
+            Save Preference
+        </button>
+</footer>
+</body></html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Detail - Ramesh Kumar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#002204",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb4ac",
+                        "on-background": "#1a1c1e",
+                        "on-secondary-fixed-variant": "#005312",
+                        "inverse-primary": "#a9c7ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e8e8ec",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1c1e",
+                        "surface-tint": "#005db7",
+                        "surface-dim": "#dad9dd",
+                        "primary": "#004d99",
+                        "primary-container": "#1565c0",
+                        "surface-container-low": "#f4f3f7",
+                        "outline-variant": "#c2c6d4",
+                        "surface-variant": "#e3e2e6",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#c42627",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#424752",
+                        "on-secondary-container": "#217128",
+                        "secondary-container": "#a0f399",
+                        "inverse-surface": "#2f3033",
+                        "surface-bright": "#faf9fd",
+                        "tertiary-fixed": "#ffdad6",
+                        "on-primary-fixed": "#001b3d",
+                        "inverse-on-surface": "#f1f0f4",
+                        "background": "#faf9fd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eeedf1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#88d982",
+                        "secondary": "#1b6d24",
+                        "on-tertiary-container": "#ffddd9",
+                        "secondary-fixed": "#a3f69c",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-container": "#dae5ff",
+                        "on-tertiary-fixed-variant": "#93000e",
+                        "outline": "#727783",
+                        "surface": "#faf9fd",
+                        "on-tertiary-fixed": "#410003",
+                        "on-primary-fixed-variant": "#00468c",
+                        "tertiary": "#a00312",
+                        "primary-fixed-dim": "#a9c7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9fd;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Shared TopAppBar Execution -->
+<header class="fixed top-0 w-full z-50 bg-[#FFFFFF]/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_4px_24px_rgba(26,28,30,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-100/50 p-2 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-blue-900">arrow_back</span>
+</button>
+<h1 class="text-blue-900 font-['Inter'] font-medium tracking-tight text-lg">Customer Detail</h1>
+</div>
+<button class="hover:bg-slate-100/50 p-2 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-blue-900">more_vert</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-2xl mx-auto">
+<!-- Customer Header Card -->
+<section class="bg-surface-container-low rounded-xl p-8 mb-8 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mb-4">
+<span class="text-3xl font-bold text-on-primary-container">R</span>
+</div>
+<h2 class="text-3xl font-bold text-on-surface mb-1 font-headline">Ramesh Kumar</h2>
+<p class="text-on-surface-variant text-base mb-8">+91 98765 43210</p>
+<div class="flex flex-col items-center">
+<span class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-1">Outstanding</span>
+<span class="text-4xl font-extrabold text-secondary">+₹5,500</span>
+</div>
+</section>
+<!-- Action Buttons Row -->
+<div class="flex gap-4 mb-12">
+<button class="flex-1 h-12 rounded-full border-2 border-secondary flex items-center justify-center gap-2 hover:bg-secondary-container/20 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-secondary">chat</span>
+<span class="font-bold text-secondary">Remind</span>
+</button>
+<button class="flex-1 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">add</span>
+<span class="font-bold">Add Entry</span>
+</button>
+</div>
+<!-- Transaction History -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-on-surface">Transaction History</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">filter_list</span>
+</div>
+<!-- Sticky Month Header -->
+<div class="sticky top-16 bg-background/95 backdrop-blur-sm py-3 z-40">
+<span class="text-xs font-bold tracking-[0.1em] text-on-surface-variant uppercase">April 2026</span>
+</div>
+<!-- Ledger List -->
+<div class="space-y-4">
+<!-- Transaction 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:bg-white/50">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Apr</span>
+<span class="text-lg font-bold text-on-surface">26</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Grocery payment</p>
+<p class="text-xs text-on-surface-variant">Online Transfer</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-secondary">+₹2,000</p>
+<span class="text-[10px] font-bold text-on-secondary-container bg-secondary-container px-2 py-0.5 rounded-full">CREDIT</span>
+</div>
+</div>
+<!-- Transaction 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:bg-white/50">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Apr</span>
+<span class="text-lg font-bold text-on-surface">20</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Monthly dues</p>
+<p class="text-xs text-on-surface-variant">Cash Payment</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-secondary">+₹3,500</p>
+<span class="text-[10px] font-bold text-on-secondary-container bg-secondary-container px-2 py-0.5 rounded-full">CREDIT</span>
+</div>
+</div>
+<!-- Transaction 3 -->
+<div class="bg-surface-container-low/50 p-5 rounded-xl border border-outline-variant/10 flex items-center justify-between transition-all">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 bg-surface-container-high rounded-lg">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Apr</span>
+<span class="text-lg font-bold text-on-surface">15</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Advance taken</p>
+<p class="text-xs text-on-surface-variant">Inventory Request</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-tertiary">-₹800</p>
+<span class="text-[10px] font-bold text-on-error-container bg-error-container px-2 py-0.5 rounded-full">DEBIT</span>
+</div>
+</div>
+<!-- Transaction 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:bg-white/50">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center justify-center w-12 h-12 bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Apr</span>
+<span class="text-lg font-bold text-on-surface">10</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Balance settled</p>
+<p class="text-xs text-on-surface-variant">Previous Month Clear</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-secondary">+₹800</p>
+<span class="text-[10px] font-bold text-on-secondary-container bg-secondary-container px-2 py-0.5 rounded-full">CREDIT</span>
+</div>
+</div>
+</div>
+<!-- Empty state filler / End of Ledger -->
+<div class="mt-12 text-center p-8 border-t border-outline-variant/15">
+<span class="material-symbols-outlined text-outline-variant text-4xl mb-2">history_edu</span>
+<p class="text-on-surface-variant text-sm italic">End of transaction records for April</p>
+</div>
+</section>
+</main>
+<!-- Floating Action for Quick Note (Contextual) -->
+<div class="fixed bottom-8 right-8">
+<button class="w-14 h-14 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/10 flex items-center justify-center hover:bg-white active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">edit_note</span>
+</button>
+</div>
+</body></html>

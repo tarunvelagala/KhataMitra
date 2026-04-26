@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KhataPro Ledger - Security Tour</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#faf9fd",
+                    "outline-variant": "#C4C6CF",
+                    "error-container": "#ffdad6",
+                    "outline": "#74777F",
+                    "surface-container": "#EFEDF1",
+                    "on-tertiary-container": "#ffddd9",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#424752",
+                    "surface-container-highest": "#E3E2E6",
+                    "on-surface": "#1a1c1e",
+                    "surface-container-low": "#f4f3f7",
+                    "secondary-fixed": "#a3f69c",
+                    "inverse-on-surface": "#f1f0f4",
+                    "on-primary-fixed": "#001b3d",
+                    "on-income-container": "#002204",
+                    "error-signal": "#BA1A1A",
+                    "secondary": "#1b6d24",
+                    "tertiary-fixed": "#ffdad6",
+                    "primary-container": "#1565c0",
+                    "surface-variant": "#e3e2e6",
+                    "surface-dim": "#dad9dd",
+                    "expense-red": "#C62828",
+                    "on-expense-container": "#410003",
+                    "inverse-surface": "#2f3033",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#410003",
+                    "primary": "#004d99",
+                    "on-primary": "#ffffff",
+                    "income-container": "#A3F69C",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-high": "#E9E7EC",
+                    "on-secondary-fixed": "#002204",
+                    "error": "#ba1a1a",
+                    "expense-container": "#FFDAD6",
+                    "surface-bright": "#faf9fd",
+                    "tertiary": "#a00312",
+                    "on-primary-fixed-variant": "#00468c",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#88d982",
+                    "on-secondary-fixed-variant": "#005312",
+                    "surface": "#faf9fd",
+                    "tertiary-fixed-dim": "#ffb4ac",
+                    "on-tertiary-fixed-variant": "#93000e",
+                    "tertiary-container": "#c42627",
+                    "inverse-primary": "#a9c7ff",
+                    "on-primary-container": "#dae5ff",
+                    "on-secondary-container": "#217128",
+                    "on-background": "#1a1c1e",
+                    "secondary-container": "#a0f399",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "surface-tint": "#005db7",
+                    "surface-container-lowest": "#ffffff",
+                    "income-green": "#2E7D32"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "section-gap": "32px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "screen-margin": "24px",
+                    "base": "8px",
+                    "lg": "24px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Work Sans"],
+                    "title-md": ["Work Sans"],
+                    "label-sm": ["Work Sans"],
+                    "headline-lg": ["Work Sans"],
+                    "display-md": ["Work Sans"],
+                    "title-lg": ["Work Sans"],
+                    "headline-md": ["Work Sans"],
+                    "label-lg": ["Work Sans"],
+                    "display-lg": ["Work Sans"],
+                    "body-lg": ["Work Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "1px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.5px", "fontWeight": "800"}],
+                    "display-md": ["45px", {"lineHeight": "52px", "fontWeight": "400"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#F2F3F5] text-on-surface min-h-screen flex flex-col items-center overflow-x-hidden">
+<!-- Top App Bar (Hidden for Focus, but using Typography Anchor for Header area) -->
+<header class="w-full h-16 flex items-center justify-center pt-8">
+<!-- Progress Indicators (Step indicator logic) -->
+<div class="flex gap-2 items-center">
+<span class="w-2 h-2 rounded-full bg-[#C2C6D4]"></span>
+<span class="w-2 h-2 rounded-full bg-[#C2C6D4]"></span>
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-screen-margin w-full max-w-md pb-40">
+<!-- Illustration Card Section -->
+<div class="flex flex-col items-center gap-lg">
+<!-- Central Hero Card -->
+<div class="w-[240px] h-[240px] bg-surface-container-lowest rounded-xl shadow-sm flex flex-col items-center justify-center gap-md">
+<span class="material-symbols-outlined text-[80px] text-primary-container fill-icon" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">
+                    verified_user
+                </span>
+<div class="bg-income-container px-sm py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-on-income-container uppercase tracking-widest">OFFLINE SAFE</span>
+</div>
+</div>
+<!-- Trust Badges Row -->
+<div class="flex items-center justify-center gap-lg opacity-60">
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-xl" data-icon="lock">lock</span>
+<span class="font-label-sm text-[10px] font-bold tracking-tighter uppercase text-on-surface-variant">PRIVATE</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+<span class="font-label-sm text-[10px] font-bold tracking-tighter uppercase text-on-surface-variant">ANONYMOUS</span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-xl" data-icon="phone_iphone">phone_iphone</span>
+<span class="font-label-sm text-[10px] font-bold tracking-tighter uppercase text-on-surface-variant">LOCAL</span>
+</div>
+</div>
+</div>
+<!-- Messaging Section -->
+<div class="mt-section-gap text-center flex flex-col gap-sm">
+<h1 class="font-title-lg text-title-lg text-primary">
+                Your data, always safe
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px] mx-auto">
+                Everything is stored privately on your phone. No account needed. Works offline too.
+            </p>
+</div>
+</main>
+<!-- Sticky Footer (Transactional/Focused Suppressed Shell) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-lowest z-50 pt-md pb-8 px-screen-margin shadow-[0_-4px_24px_rgba(0,0,0,0.04)] rounded-t-xl flex flex-col items-center gap-md">
+<!-- Primary Action Button -->
+<button class="w-full h-14 bg-primary-container text-white rounded-full font-title-md flex items-center justify-center transition-all active:scale-95 duration-200">
+            Get Started
+        </button>
+<!-- Secondary/Skip Action -->
+<button class="text-on-surface-variant font-label-lg px-4 py-2 hover:bg-surface-container rounded-lg transition-colors">
+            Skip
+        </button>
+</footer>
+</body></html>

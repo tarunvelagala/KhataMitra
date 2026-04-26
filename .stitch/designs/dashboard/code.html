@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KhataPro Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #faf9fd;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .elevation-0 { box-shadow: none; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed": "#001b3d",
+                        "background": "#faf9fd",
+                        "secondary-fixed": "#a3f69c",
+                        "primary-container": "#1565c0",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-surface": "#1a1c1e",
+                        "expense-container": "#FFDAD6",
+                        "income-container": "#A3F69C",
+                        "on-background": "#1a1c1e",
+                        "surface-tint": "#005db7",
+                        "on-secondary-fixed-variant": "#005312",
+                        "surface-container": "#eeedf1",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#1b6d24",
+                        "outline-variant": "#C4C6CF",
+                        "expense-red": "#C62828",
+                        "surface": "#faf9fd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e8e8ec",
+                        "on-income-container": "#002204",
+                        "tertiary-fixed": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb4ac",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#00468c",
+                        "inverse-on-surface": "#f1f0f4",
+                        "on-secondary-fixed": "#002204",
+                        "inverse-surface": "#2f3033",
+                        "error-signal": "#BA1A1A",
+                        "secondary-fixed-dim": "#88d982",
+                        "outline": "#74777F",
+                        "on-surface-variant": "#424752",
+                        "on-secondary-container": "#217128",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#c42627",
+                        "surface-dim": "#dad9dd",
+                        "inverse-primary": "#a9c7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "income-green": "#2E7D32",
+                        "on-expense-container": "#410003",
+                        "surface-variant": "#e3e2e6",
+                        "primary": "#004d99",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#F4F3F7",
+                        "on-tertiary-fixed-variant": "#93000e",
+                        "surface-bright": "#faf9fd",
+                        "on-tertiary-container": "#ffddd9",
+                        "secondary-container": "#a0f399",
+                        "on-primary-container": "#dae5ff",
+                        "on-tertiary-fixed": "#410003",
+                        "tertiary": "#a00312",
+                        "primary-fixed-dim": "#a9c7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "screen-margin": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "section-gap": "32px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "1px", "fontWeight": "700"}],
+                        "display-md": ["45px", {"lineHeight": "52px", "fontWeight": "400"}],
+                        "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.5px", "fontWeight": "800"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-16 px-6 w-full fixed top-0 z-50 bg-[#faf9fd] border-b border-[#e3e2e6]">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-[#1565c0]/5 transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface">menu</span>
+</button>
+<h1 class="font-['Work_Sans'] font-extrabold text-xl tracking-tight text-[#1565c0]">KhataPro</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-[#1565c0]/5 transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="professional portrait of a confident middle-aged south asian businessman in a clean white shirt against a neutral office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEId0o-0eI7C7wx4T565DkXwUCmD-vVl8ppQcl7vJfA7vlYLdQCx693Pb5No7hWP0vsjfAHbqj2GFb8h5FmFj4-nUQjHF1J1GA6PgQLg_9NExl5m41R99NWSE-LD5TuD1JewPPlDH0Boq8xEYD7F0VmNK9Zf6bpfULKCXf7BDbOl4_yU6fC6vCttOc0MWry4wuy_qiRLvIB-LPnsGv_BjJN_RY-JV3Wxq6wQnFm7DD6f27bKQ8DGN16xVsyFynxHg5Al3nUfcYVKA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-16 px-screen-margin pt-lg space-y-section-gap max-w-2xl mx-auto">
+<!-- Hero Balance Card -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<span class="text-label-lg text-on-surface-variant">Total Balance</span>
+<div class="flex items-center gap-2 mt-xs">
+<h2 class="text-headline-lg font-bold text-primary-container">₹8,300</h2>
+<button class="material-symbols-outlined text-on-surface-variant text-lg">visibility</button>
+</div>
+</div>
+<div class="bg-primary-fixed/30 p-sm rounded-xl">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md mt-lg">
+<div class="bg-income-container flex flex-col p-md rounded-xl">
+<div class="flex items-center gap-1 text-on-income-container mb-1">
+<span class="material-symbols-outlined text-sm font-bold">arrow_upward</span>
+<span class="text-label-sm uppercase">Income</span>
+</div>
+<span class="text-title-md text-on-income-container font-bold">₹12,500</span>
+</div>
+<div class="bg-expense-container flex flex-col p-md rounded-xl">
+<div class="flex items-center gap-1 text-on-expense-container mb-1">
+<span class="material-symbols-outlined text-sm font-bold">arrow_downward</span>
+<span class="text-label-sm uppercase">Expense</span>
+</div>
+<span class="text-title-md text-on-expense-container font-bold">₹4,200</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions Grid -->
+<section class="grid grid-cols-4 gap-sm">
+<div class="flex flex-col items-center gap-2">
+<button class="w-14 h-14 bg-surface-container-high rounded-xl flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</button>
+<span class="text-label-sm text-center leading-tight">Add Customer</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<button class="w-14 h-14 bg-surface-container-high rounded-xl flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+</button>
+<span class="text-label-sm text-center leading-tight">Generate Bill</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<button class="w-14 h-14 bg-surface-container-high rounded-xl flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">history</span>
+</button>
+<span class="text-label-sm text-center leading-tight">Log Book</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<button class="w-14 h-14 bg-surface-container-high rounded-xl flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">pending_actions</span>
+</button>
+<span class="text-label-sm text-center leading-tight">Reports</span>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="text-title-lg font-bold text-on-surface">Recent Transactions</h3>
+<a class="text-label-lg text-primary-container hover:underline" href="#">See all</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<!-- Row 1: Income -->
+<div class="flex items-center p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container font-bold overflow-hidden">
+<img alt="Customer" class="w-full h-full object-cover" data-alt="close-up of a smiling young south asian woman with dark hair wearing a traditional cotton saree in a bright daylight setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1imUJL4GLkEQsKkX09duFa_XWg5Pf7AMf6bBqSCa4TNsOoWvnpp75DnyVsLs2XEPaeH2jxZ2MBGcdQMyDUGYRAS2arpb8iry-9c2iZb5TDu7NJCpClErNwWDkfR4tfLgWNHqEkvnnjLpilHpWXmI86xwxrX7MQK824uEG4E7fV2JrmYl2KLSXtamNXem0Wt2CWSyIcffJ5PYdvGZNhpqvau9HlrreR0DIv-N_TM8x7iGOX2arzEl8XT4iwqDK5g1hARGkIVEtcII"/>
+</div>
+<div class="ml-md flex-grow">
+<h4 class="text-body-lg font-semibold text-on-surface leading-none">Anjali Sharma</h4>
+<span class="text-label-sm text-on-surface-variant font-normal">Today, 10:45 AM</span>
+</div>
+<div class="text-right">
+<span class="text-title-md text-income-green font-bold">+ ₹1,200</span>
+<div class="text-[10px] uppercase font-bold text-income-green tracking-wider">Credit</div>
+</div>
+</div>
+<!-- Row 2: Expense -->
+<div class="flex items-center p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed font-bold">
+                        RK
+                    </div>
+<div class="ml-md flex-grow">
+<h4 class="text-body-lg font-semibold text-on-surface leading-none">Rajesh Kirana</h4>
+<span class="text-label-sm text-on-surface-variant font-normal">Today, 09:12 AM</span>
+</div>
+<div class="text-right">
+<span class="text-title-md text-expense-red font-bold">- ₹350</span>
+<div class="text-[10px] uppercase font-bold text-expense-red tracking-wider">Debit</div>
+</div>
+</div>
+<!-- Row 3: Income -->
+<div class="flex items-center p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container font-bold overflow-hidden">
+<img alt="Customer" class="w-full h-full object-cover" data-alt="portrait of a middle-aged south asian man with a kind expression and silver hair wearing a formal shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCahg9TsFfhZ-oHQjnnr5leQaQWOb1wukAQeVTLbszzBPwTyERKAQJ9dZUhIPw8J4Op04VVEGTomISJj7idQCwMOdjKzdaFygIl1UMxtMXmKKE-N-tvp4pykur0zAuL3Go7rTN000bZFXY07KtGaqytD3_qXKCNUOPldBdgcMZV352Y9fMXUk6tlU5dIOL2aGTJ8FuD5fNKRdtdfJFI3tcgdVcbjJVKed5QjWP3O0yeegW-6Uy_7lsNpFgel81LhVn_5Gdz02C9sfI"/>
+</div>
+<div class="ml-md flex-grow">
+<h4 class="text-body-lg font-semibold text-on-surface leading-none">Amit Verma</h4>
+<span class="text-label-sm text-on-surface-variant font-normal">Yesterday, 06:30 PM</span>
+</div>
+<div class="text-right">
+<span class="text-title-md text-income-green font-bold">+ ₹5,000</span>
+<div class="text-[10px] uppercase font-bold text-income-green tracking-wider">Credit</div>
+</div>
+</div>
+<!-- Row 4: Expense -->
+<div class="flex items-center p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold">
+                        EB
+                    </div>
+<div class="ml-md flex-grow">
+<h4 class="text-body-lg font-semibold text-on-surface leading-none">Electricity Bill</h4>
+<span class="text-label-sm text-on-surface-variant font-normal">12 Oct, 11:00 AM</span>
+</div>
+<div class="text-right">
+<span class="text-title-md text-expense-red font-bold">- ₹2,100</span>
+<div class="text-[10px] uppercase font-bold text-expense-red tracking-wider">Debit</div>
+</div>
+</div>
+<!-- Row 5: Income -->
+<div class="flex items-center p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold">
+                        SK
+                    </div>
+<div class="ml-md flex-grow">
+<h4 class="text-body-lg font-semibold text-on-surface leading-none">Sunil Kumar</h4>
+<span class="text-label-sm text-on-surface-variant font-normal">11 Oct, 04:20 PM</span>
+</div>
+<div class="text-right">
+<span class="text-title-md text-income-green font-bold">+ ₹850</span>
+<div class="text-[10px] uppercase font-bold text-income-green tracking-wider">Credit</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB: Floating Action Button -->
+<button class="fixed bottom-24 right-6 bg-[#1565c0] text-white flex items-center gap-2 px-6 py-4 rounded-full shadow-lg active:scale-95 transition-transform duration-150 ease-out z-[60]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 700;">add</span>
+<span class="font-['Work_Sans'] font-bold text-sm tracking-wide">Add Entry</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-[#faf9fd] border-t border-[#e3e2e6] shadow-none">
+<a class="flex flex-col items-center justify-center bg-[#1565c0]/10 text-[#1565c0] rounded-2xl px-5 py-1 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Work_Sans'] text-[11px] font-bold tracking-[1px] uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424752] px-5 py-1 hover:text-[#1565c0] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Work_Sans'] text-[11px] font-bold tracking-[1px] uppercase mt-1">Customers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424752] px-5 py-1 hover:text-[#1565c0] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-['Work_Sans'] text-[11px] font-bold tracking-[1px] uppercase mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424752] px-5 py-1 hover:text-[#1565c0] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Work_Sans'] text-[11px] font-bold tracking-[1px] uppercase mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

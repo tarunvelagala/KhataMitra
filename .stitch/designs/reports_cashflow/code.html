@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>KhataPro - Cash Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#a00312",
+                    "on-tertiary-fixed": "#410003",
+                    "on-primary-container": "#dae5ff",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "on-tertiary-fixed-variant": "#93000e",
+                    "surface-container-low": "#f4f3f7",
+                    "secondary-container": "#a0f399",
+                    "surface-bright": "#faf9fd",
+                    "on-tertiary-container": "#ffddd9",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e3e2e6",
+                    "on-expense-container": "#410003",
+                    "primary": "#004d99",
+                    "tertiary-container": "#c42627",
+                    "surface-dim": "#dad9dd",
+                    "on-secondary-container": "#217128",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#424752",
+                    "secondary-fixed-dim": "#88d982",
+                    "outline-variant": "#c2c6d4",
+                    "outline": "#74777F",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#a9c7ff",
+                    "surface-container": "#EFEDF1",
+                    "inverse-on-surface": "#f1f0f4",
+                    "inverse-surface": "#2f3033",
+                    "on-secondary-fixed": "#002204",
+                    "error-red": "#BA1A1A",
+                    "tertiary-fixed-dim": "#ffb4ac",
+                    "surface-container-high": "#E9E7EC",
+                    "on-primary-fixed-variant": "#00468c",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffdad6",
+                    "on-income-container": "#002204",
+                    "surface-container-highest": "#e3e2e6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#faf9fd",
+                    "secondary": "#1b6d24",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "income-container": "#A3F69C",
+                    "surface-tint": "#005db7",
+                    "on-secondary-fixed-variant": "#005312",
+                    "on-background": "#1a1c1e",
+                    "expense-container": "#FFDAD6",
+                    "on-surface": "#1a1c1e",
+                    "primary-container": "#1565c0",
+                    "secondary-fixed": "#a3f69c",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-fixed": "#001b3d",
+                    "background": "#faf9fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "screen-margin": "24px",
+                    "section-gap": "32px",
+                    "btn-v": "20px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "input-v": "20px",
+                    "sm": "12px",
+                    "input-h": "16px",
+                    "btn-h": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Work Sans"],
+                    "label-md": ["Work Sans"],
+                    "headline-sm": ["Work Sans"],
+                    "title-sm": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "title-md": ["Work Sans"],
+                    "body-sm": ["Work Sans"],
+                    "headline-lg": ["Work Sans"],
+                    "label-sm": ["Work Sans"],
+                    "display-md": ["Work Sans"],
+                    "display-lg": ["Work Sans"],
+                    "body-md": ["Work Sans"],
+                    "title-lg": ["Work Sans"],
+                    "headline-md": ["Work Sans"],
+                    "display-sm": ["Work Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #faf9fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(163, 246, 156, 0.3) 0%, rgba(163, 246, 156, 0) 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-6 py-4 bg-[#faf9fd] border-b border-[#C4C6CF] sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#EFEDF1] transition-colors duration-200">
+<span class="material-symbols-outlined text-[#1565c0]">arrow_back</span>
+</button>
+<h1 class="font-['Work_Sans'] text-2xl font-bold leading-8 text-[#1565c0]">Cash Flow</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#EFEDF1] transition-colors duration-200">
+<span class="material-symbols-outlined text-[#1565c0]">share</span>
+</button>
+</header>
+<main class="px-screen-margin py-lg space-y-section-gap">
+<!-- Period Selector -->
+<div class="bg-surface-container-high rounded-xl p-1 flex w-full">
+<button class="flex-1 py-2 text-center font-label-lg text-label-lg text-on-surface-variant rounded-lg transition-all">Week</button>
+<button class="flex-1 py-2 text-center font-label-lg text-label-lg bg-surface-container-lowest text-primary rounded-lg shadow-sm">Month</button>
+<button class="flex-1 py-2 text-center font-label-lg text-label-lg text-on-surface-variant rounded-lg transition-all">Quarter</button>
+</div>
+<!-- Line Chart Visualization -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant space-y-md">
+<div class="flex justify-between items-end h-48 relative pt-4">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-body-sm font-body-sm text-outline opacity-70">
+<span>₹9k</span>
+<span>₹7k</span>
+<span>₹5k</span>
+<span>₹3k</span>
+</div>
+<!-- Chart Area -->
+<div class="ml-8 flex-1 h-full relative overflow-hidden">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="w-full border-t border-outline-variant border-dashed opacity-30"></div>
+<div class="w-full border-t border-outline-variant border-dashed opacity-30"></div>
+<div class="w-full border-t border-outline-variant border-dashed opacity-30"></div>
+<div class="w-full border-t border-outline-variant border-dashed opacity-30"></div>
+</div>
+<!-- SVG Chart Line and Area -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Area Fill -->
+<path d="M0,70 L20,60 L40,65 L60,35 L80,25 L100,45 L100,100 L0,100 Z" fill="url(#grad)"></path>
+<defs>
+<lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#A3F69C;stop-opacity:0.4"></stop>
+<stop offset="100%" style="stop-color:#A3F69C;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<!-- Stroke Line -->
+<path d="M0,70 L20,60 L40,65 L60,35 L80,25 L100,45" fill="none" stroke="#2E7D32" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<!-- Data Points -->
+<circle cx="0" cy="70" fill="#2E7D32" r="1.5"></circle>
+<circle cx="60" cy="35" fill="#2E7D32" r="1.5"></circle>
+<circle cx="80" cy="25" fill="#2E7D32" r="2"></circle>
+<circle cx="100" cy="45" fill="#2E7D32" r="1.5"></circle>
+</svg>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="ml-8 flex justify-between text-body-sm font-body-sm text-outline px-1">
+<span>Apr 1</span>
+<span>Apr 15</span>
+<span>Apr 30</span>
+</div>
+</div>
+<!-- Stats Chips Row -->
+<div class="flex gap-sm overflow-x-auto hide-scrollbar">
+<div class="flex-1 min-w-[100px] bg-income-container rounded-xl p-md flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-on-income-container">Peak</span>
+<span class="text-title-lg font-title-lg text-on-income-container">₹9,100</span>
+</div>
+<div class="flex-1 min-w-[100px] bg-surface-container rounded-xl p-md flex flex-col gap-xs border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Low</span>
+<span class="text-title-lg font-title-lg text-on-surface">₹4,200</span>
+</div>
+<div class="flex-1 min-w-[100px] bg-primary-fixed rounded-xl p-md flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-on-primary-fixed-variant">Avg</span>
+<span class="text-title-lg font-title-lg text-primary">₹6,800</span>
+</div>
+</div>
+<!-- Daily Transactions Section -->
+<section class="space-y-md">
+<h2 class="font-label-md text-label-md text-on-surface-variant tracking-wider uppercase">Daily Transactions</h2>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant divide-y divide-outline-variant">
+<!-- Transaction Row 1 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-[#D6E4FF] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-on-surface">Ramesh Kumar</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Apr 26</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-secondary">+₹2,000</p>
+</div>
+</div>
+<!-- Transaction Row 2 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-[#D6E4FF] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">store</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-on-surface">Priya Stores</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Apr 25</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-tertiary">-₹1,500</p>
+</div>
+</div>
+<!-- Transaction Row 3 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-[#D6E4FF] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-on-surface">Mohammed Ali</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Apr 24</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-secondary">+₹3,500</p>
+</div>
+</div>
+<!-- Transaction Row 4 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-[#D6E4FF] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">checkroom</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-on-surface">Suresh Textiles</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Apr 23</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-tertiary">-₹700</p>
+</div>
+</div>
+<!-- Transaction Row 5 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-[#D6E4FF] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">business_center</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-on-surface">Anita Enterprises</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Apr 22</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-title-lg text-secondary">+₹1,200</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-[#faf9fd] border-t border-[#C4C6CF]">
+<a class="flex flex-col items-center justify-center text-[#424752] px-5 py-1 transition-all duration-100 scale-95 hover:bg-[#EFEDF1]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Work_Sans'] text-xs font-semibold">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424752] px-5 py-1 transition-all duration-100 scale-95 hover:bg-[#EFEDF1]" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-['Work_Sans'] text-xs font-semibold">Transactions</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#1565c0] text-white rounded-full px-5 py-1 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Work_Sans'] text-xs font-semibold">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424752] px-5 py-1 transition-all duration-100 scale-95 hover:bg-[#EFEDF1]" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Work_Sans'] text-xs font-semibold">Customers</span>
+</a>
+</nav>
+</body></html>

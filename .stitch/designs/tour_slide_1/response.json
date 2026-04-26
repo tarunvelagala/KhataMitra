@@ -1,0 +1,289 @@
+{"id":1,"jsonrpc":"2.0","result":{"content":[{"text":"{\"projectId\":\"3823020204310937544\",\"sessionId\":\"16594281925639833187\",\"outputComponents\":[{\"designSystem\":{\"name\":\"assets/0afacc75aa8c43768c8dee2435d5edf0\",\"designSystem\":{\"displayName\":\"Axiom Ledger\",\"theme\":{\"colorMode\":\"LIGHT\",\"font\":\"MANROPE\",\"roundness\":\"ROUND_FULL\",\"customColor\":\"#1565C0\",\"headlineFont\":\"MANROPE\",\"bodyFont\":\"INTER\",\"labelFont\":\"INTER\",\"namedColors\":{\"background\":\"#f8f9fb\",\"error\":\"#ba1a1a\",\"error_container\":\"#ffdad6\",\"inverse_on_surface\":\"#f0f1f3\",\"inverse_primary\":\"#a9c7ff\",\"inverse_surface\":\"#2e3132\",\"on_background\":\"#191c1e\",\"on_error\":\"#ffffff\",\"on_error_container\":\"#93000a\",\"on_primary\":\"#ffffff\",\"on_primary_container\":\"#dae5ff\",\"on_primary_fixed\":\"#001b3d\",\"on_primary_fixed_variant\":\"#00468c\",\"on_secondary\":\"#ffffff\",\"on_secondary_container\":\"#217128\",\"on_secondary_fixed\":\"#002204\",\"on_secondary_fixed_variant\":\"#005312\",\"on_surface\":\"#191c1e\",\"on_surface_variant\":\"#424752\",\"on_tertiary\":\"#ffffff\",\"on_tertiary_container\":\"#ffddd9\",\"on_tertiary_fixed\":\"#410003\",\"on_tertiary_fixed_variant\":\"#93000e\",\"outline\":\"#727783\",\"outline_variant\":\"#c2c6d4\",\"primary\":\"#004d99\",\"primary_container\":\"#1565c0\",\"primary_fixed\":\"#d6e3ff\",\"primary_fixed_dim\":\"#a9c7ff\",\"secondary\":\"#1b6d24\",\"secondary_container\":\"#a0f399\",\"secondary_fixed\":\"#a3f69c\",\"secondary_fixed_dim\":\"#88d982\",\"surface\":\"#f8f9fb\",\"surface_bright\":\"#f8f9fb\",\"surface_container\":\"#edeef0\",\"surface_container_high\":\"#e7e8ea\",\"surface_container_highest\":\"#e1e2e4\",\"surface_container_low\":\"#f3f4f6\",\"surface_container_lowest\":\"#ffffff\",\"surface_dim\":\"#d9dadc\",\"surface_tint\":\"#005db7\",\"surface_variant\":\"#e1e2e4\",\"tertiary\":\"#a00312\",\"tertiary_container\":\"#c42627\",\"tertiary_fixed\":\"#ffdad6\",\"tertiary_fixed_dim\":\"#ffb4ac\"},\"designMd\":\"# Design System Specification: The Modern Ledger\n\n## 1. Overview & Creative North Star\n**Creative North Star: \\"The Architectural Ledger\\"**\n\nThis design system moves away from the cluttered, line-heavy spreadsheets of the past. Instead, we are treating the financial interface as a piece of high-end editorial design. The \\"Modern Physical Ledger\\" metaphor is not about skeuomorphism; it is about the *weight* and *tactility* of fine stationery. \n\nWe achieve a premium feel through **Architectural Whitespace** and **Tonal Depth**. By breaking the rigid \\"grid-of-boxes\\" mentality and embracing intentional asymmetry and layered surfaces, we create an environment that feels both authoritative and airy. We don't use lines to separate data; we use light and shadow—the way a physical page rests upon another.\n\n---\n\n## 2. Colors & Surface Logic\n\nOur palette is anchored by the deep, intellectual `primary` (#004d99) and supported by functional `secondary` (Credit) and `tertiary` (Debit) tones. However, the soul of the system lies in its neutrals.\n\n### The \\"No-Line\\" Rule\n**Explicit Instruction:** 1px solid borders are prohibited for sectioning. \nBoundaries must be defined through background color shifts or subtle tonal transitions. To separate a sidebar from a main feed, transition from `surface` to `surface-container-low`. To highlight a specific ledger entry, use `surface-container-highest` against a `surface` background.\n\n### Surface Hierarchy & Nesting\nTreat the UI as a series of physical layers. We use the Material surface tiers to create \\"nested\\" depth:\n*   **Base Layer:** `surface` (#f8f9fb) – The desk upon which everything sits.\n*   **Section Layer:** `surface-container-low` (#f3f4f6) – The primary ledger sheet.\n*   **Content Layer:** `surface-container-highest` (#e1e2e4) – Focused information cards.\n*   **Interaction Layer:** `surface-container-lowest` (#ffffff) – Used for elements that need to \\"pop\\" or draw immediate focus, such as active input fields.\n\n### The \\"Glass & Gradient\\" Rule\nTo elevate the experience beyond \\"standard utilitarian,\\" use Glassmorphism for floating elements (drawers, floating action buttons, or modals). Apply a semi-transparent `surface` color with a `backdrop-blur` of 20px. \n\nFor high-impact areas, use a subtle **Signature Texture**: A linear gradient from `primary` (#004d99) to `primary-container` (#1565c0) at a 135-degree angle. This adds \\"soul\\" and a professional sheen to hero sections and primary CTAs.\n\n---\n\n## 3. Typography: Editorial Authority\n\nWe use two distinct typefaces to balance character with precision.\n\n*   **Display & Headlines (Manrope):** This is our \\"Editorial\\" voice. Manrope’s geometric yet warm curves provide an authoritative, modern feel. \n    *   *Usage:* Use `display-lg` and `headline-md` for account balances and section headers to create a sense of scale and importance.\n*   **Body & Titles (Inter):** Our \\"Functional\\" voice. Inter is designed for maximum legibility at small sizes, crucial for dense financial figures.\n    *   *Usage:* All transactional data, ledger entries, and labels use the Inter scale (`body-md`, `label-sm`).\n\n**Hierarchy Strategy:** Use extreme contrast in scale. A large `display-md` balance paired with a tiny, all-caps `label-md` creates a premium, high-fashion look that makes the data feel curated rather than just \\"listed.\\"\n\n---\n\n## 4. Elevation & Depth: Tonal Layering\n\nTraditional drop shadows are often messy. In this system, depth is achieved through **Tonal Layering**.\n\n*   **The Layering Principle:** Place a `surface-container-lowest` (#ffffff) card on a `surface-container-low` (#f3f4f6) section. This creates a soft, natural \\"lift\\" without a single shadow.\n*   **Ambient Shadows:** When an element must float (e.g., a modal or a floating action button), use a shadow with a blur radius of at least 32px and an opacity of 4–8%. The shadow color should be a tinted version of `on-surface` (#191c1e), never pure black.\n*   **The \\"Ghost Border\\" Fallback:** If a border is required for accessibility, it must be a \\"Ghost Border.\\" Use the `outline-variant` token at 15% opacity. High-contrast, 100% opaque borders are strictly forbidden.\n\n---\n\n## 5. Component Guidelines\n\n### Buttons\n*   **Primary:** Pill-shaped (`rounded-full`), using the Signature Texture gradient. Typography: `title-sm` in `on-primary`.\n*   **Secondary:** Pill-shaped, `surface-container-high` background with `primary` text. No border.\n*   **Interaction:** On hover, primary buttons should subtly shift in tonal depth rather than changing color entirely.\n\n### Cards & Financial Lists\n*   **Structure:** 12px corner radius (`DEFAULT`).\n*   **The Divider Rule:** Forbid the use of divider lines between list items. Instead, use 16px–24px of vertical whitespace or a subtle background shift to `surface-container-low` on hover.\n*   **Financial Figures:** Always use tabular numbers (monospaced digits) for columns of figures to ensure decimal points align perfectly.\n\n### Input Fields\n*   **Style:** Minimalist. Use `surface-container-highest` for the field background. \n*   **State:** On focus, the field should transition to `surface-container-lowest` (#ffffff) with a 2px `primary` \\"Ghost Border\\" at 20% opacity. \n\n### Specialized Ledger Components\n*   **Transaction Chips:** Use `secondary_container` (#a0f399) for \\"Credit\\" and `tertiary_container` (#c42627) for \\"Debit.\\" Keep the labels in `on-secondary-container` and `on-tertiary-container` respectively for high-contrast accessibility.\n*   **The Progress Ribbon:** Use a thin 4px `primary` bar at the very top of cards to indicate \\"Pending\\" or \\"Active\\" status, maintaining the architectural feel.\n\n---\n\n## 6. Do’s and Don’ts\n\n### Do\n*   **Do** embrace whitespace. If you think there's enough room, add 8px more.\n*   **Do** use `surface-dim` for inactive or disabled states to maintain the tonal aesthetic.\n*   **Do** align all financial figures to the right in data tables.\n*   **Do** use Glassmorphism for mobile navigation bars to let the \\"ledger paper\\" scroll underneath.\n\n### Don’t\n*   **Don’t** use 1px solid borders to \\"box in\\" content. It breaks the \\"Airy\\" atmosphere.\n*   **Don’t** use standard Material shadows. They are too heavy for this system.\n*   **Don’t** use vibrant, saturated colors for backgrounds. Stick to the Warm Light Grey `surface` tones.\n*   **Don’t** mix typography families. Headlines are Manrope; everything else is Inter.\",\"colorVariant\":\"FIDELITY\",\"overridePrimaryColor\":\"#1565C0\",\"overrideSecondaryColor\":\"#2E7D32\",\"overrideTertiaryColor\":\"#C62828\",\"overrideNeutralColor\":\"#F2F3F5\",\"spacingScale\":3}},\"version\":\"1\"}},{\"design\":{\"screens\":[{\"screenshot\":{\"name\":\"projects/3823020204310937544/files/675a5b71825544cb8a6a5a8bcf131b77\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/ADBb0ujMLv5aTowllys2xka6Fc_8Tn2e49TbLgJxe8T1RFeLXxHPctsYN7jK27kHTPWl5NhsmEBSqofVqD_zZbjeZ03o2DGyCdPtgbChWZ7SW04ZA6-SeWatT1uykuM8UmsbCU-Ef8NgVj1ALNX-VkCqL_cY9q8PQy5fg2XYWUdS1lVEokDMLObVtARYP8YKpqdxcFZGPUXA05iW-kM1LWUSjUzpJpDWqMJFCaJDjIsTwouPj9WqT_fQhldHyA\"},\"htmlCode\":{\"name\":\"projects/3823020204310937544/files/a57783c33f86460093795066c1ed0c86\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzRkM2YzYmNkMzI5YTRmYmVhNDNjNDczOTE2ZGU0MDZmEgsSBxCyidzrwAoYAZIBIwoKcHJvamVjdF9pZBIVQhMzODIzMDIwMjA0MzEwOTM3NTQ0&filename=&opi=96797242\",\"mimeType\":\"text/html\"},\"id\":\"9eefbd00911a4604a35f14bd05e953d8\",\"generatedBy\":\"figaro_agent\",\"width\":\"780\",\"height\":\"1768\",\"title\":\"Tour - Track Every Rupee\",\"prompt\":\"KhataPro tour screen 1 of 3: 'Track every rupee'.\nBackground: Solid #F2F3F5 light grey.\nTop-center: 3 horizontal dots progress indicator (Slide 1 active: Deep Blue #1565C0).\nCenter: Slightly tilted smartphone wireframe illustration. Inside phone: A mini ledger list with two rows. Row 1: green '+₹1,250' text (Secondary Green #2E7D32). Row 2: blue '-₹400' text. Bottom of phone has a circular FAB button in primary blue.\nHeadline: 'Track every rupee' in large bold dark text, center-aligned.\nBody copy: 'Add customers, record what they owe you or you owe them. Balances update instantly.' in grey, center-aligned.\nSwipe hint: 'SWIPE TO EXPLORE' with small arrows, subtle opacity.\nSticky Footer: Full-width white bar at bottom. Primary Button: 'Next' (Blue fill #1565C0, white text, pill-shaped/9999px radius). Below button: 'Skip' text link in grey.\nAtmosphere: Professional, clean, airy, financial ledger aesthetic.\",\"name\":\"projects/3823020204310937544/screens/9eefbd00911a4604a35f14bd05e953d8\",\"theme\":{\"colorMode\":\"LIGHT\",\"font\":\"MANROPE\",\"roundness\":\"ROUND_FULL\",\"customColor\":\"#1565C0\",\"headlineFont\":\"MANROPE\",\"bodyFont\":\"INTER\",\"labelFont\":\"INTER\",\"namedColors\":{\"background\":\"#f8f9fb\",\"error\":\"#ba1a1a\",\"error_container\":\"#ffdad6\",\"inverse_on_surface\":\"#f0f1f3\",\"inverse_primary\":\"#a9c7ff\",\"inverse_surface\":\"#2e3132\",\"on_background\":\"#191c1e\",\"on_error\":\"#ffffff\",\"on_error_container\":\"#93000a\",\"on_primary\":\"#ffffff\",\"on_primary_container\":\"#dae5ff\",\"on_primary_fixed\":\"#001b3d\",\"on_primary_fixed_variant\":\"#00468c\",\"on_secondary\":\"#ffffff\",\"on_secondary_container\":\"#217128\",\"on_secondary_fixed\":\"#002204\",\"on_secondary_fixed_variant\":\"#005312\",\"on_surface\":\"#191c1e\",\"on_surface_variant\":\"#424752\",\"on_tertiary\":\"#ffffff\",\"on_tertiary_container\":\"#ffddd9\",\"on_tertiary_fixed\":\"#410003\",\"on_tertiary_fixed_variant\":\"#93000e\",\"outline\":\"#727783\",\"outline_variant\":\"#c2c6d4\",\"primary\":\"#004d99\",\"primary_container\":\"#1565c0\",\"primary_fixed\":\"#d6e3ff\",\"primary_fixed_dim\":\"#a9c7ff\",\"secondary\":\"#1b6d24\",\"secondary_container\":\"#a0f399\",\"secondary_fixed\":\"#a3f69c\",\"secondary_fixed_dim\":\"#88d982\",\"surface\":\"#f8f9fb\",\"surface_bright\":\"#f8f9fb\",\"surface_container\":\"#edeef0\",\"surface_container_high\":\"#e7e8ea\",\"surface_container_highest\":\"#e1e2e4\",\"surface_container_low\":\"#f3f4f6\",\"surface_container_lowest\":\"#ffffff\",\"surface_dim\":\"#d9dadc\",\"surface_tint\":\"#005db7\",\"surface_variant\":\"#e1e2e4\",\"tertiary\":\"#a00312\",\"tertiary_container\":\"#c42627\",\"tertiary_fixed\":\"#ffdad6\",\"tertiary_fixed_dim\":\"#ffb4ac\"},\"designMd\":\"# Design System Specification: The Modern Ledger\n\n## 1. Overview & Creative North Star\n**Creative North Star: \\"The Architectural Ledger\\"**\n\nThis design system moves away from the cluttered, line-heavy spreadsheets of the past. Instead, we are treating the financial interface as a piece of high-end editorial design. The \\"Modern Physical Ledger\\" metaphor is not about skeuomorphism; it is about the *weight* and *tactility* of fine stationery. \n\nWe achieve a premium feel through **Architectural Whitespace** and **Tonal Depth**. By breaking the rigid \\"grid-of-boxes\\" mentality and embracing intentional asymmetry and layered surfaces, we create an environment that feels both authoritative and airy. We don't use lines to separate data; we use light and shadow—the way a physical page rests upon another.\n\n---\n\n## 2. Colors & Surface Logic\n\nOur palette is anchored by the deep, intellectual `primary` (#004d99) and supported by functional `secondary` (Credit) and `tertiary` (Debit) tones. However, the soul of the system lies in its neutrals.\n\n### The \\"No-Line\\" Rule\n**Explicit Instruction:** 1px solid borders are prohibited for sectioning. \nBoundaries must be defined through background color shifts or subtle tonal transitions. To separate a sidebar from a main feed, transition from `surface` to `surface-container-low`. To highlight a specific ledger entry, use `surface-container-highest` against a `surface` background.\n\n### Surface Hierarchy & Nesting\nTreat the UI as a series of physical layers. We use the Material surface tiers to create \\"nested\\" depth:\n*   **Base Layer:** `surface` (#f8f9fb) – The desk upon which everything sits.\n*   **Section Layer:** `surface-container-low` (#f3f4f6) – The primary ledger sheet.\n*   **Content Layer:** `surface-container-highest` (#e1e2e4) – Focused information cards.\n*   **Interaction Layer:** `surface-container-lowest` (#ffffff) – Used for elements that need to \\"pop\\" or draw immediate focus, such as active input fields.\n\n### The \\"Glass & Gradient\\" Rule\nTo elevate the experience beyond \\"standard utilitarian,\\" use Glassmorphism for floating elements (drawers, floating action buttons, or modals). Apply a semi-transparent `surface` color with a `backdrop-blur` of 20px. \n\nFor high-impact areas, use a subtle **Signature Texture**: A linear gradient from `primary` (#004d99) to `primary-container` (#1565c0) at a 135-degree angle. This adds \\"soul\\" and a professional sheen to hero sections and primary CTAs.\n\n---\n\n## 3. Typography: Editorial Authority\n\nWe use two distinct typefaces to balance character with precision.\n\n*   **Display & Headlines (Manrope):** This is our \\"Editorial\\" voice. Manrope’s geometric yet warm curves provide an authoritative, modern feel. \n    *   *Usage:* Use `display-lg` and `headline-md` for account balances and section headers to create a sense of scale and importance.\n*   **Body & Titles (Inter):** Our \\"Functional\\" voice. Inter is designed for maximum legibility at small sizes, crucial for dense financial figures.\n    *   *Usage:* All transactional data, ledger entries, and labels use the Inter scale (`body-md`, `label-sm`).\n\n**Hierarchy Strategy:** Use extreme contrast in scale. A large `display-md` balance paired with a tiny, all-caps `label-md` creates a premium, high-fashion look that makes the data feel curated rather than just \\"listed.\\"\n\n---\n\n## 4. Elevation & Depth: Tonal Layering\n\nTraditional drop shadows are often messy. In this system, depth is achieved through **Tonal Layering**.\n\n*   **The Layering Principle:** Place a `surface-container-lowest` (#ffffff) card on a `surface-container-low` (#f3f4f6) section. This creates a soft, natural \\"lift\\" without a single shadow.\n*   **Ambient Shadows:** When an element must float (e.g., a modal or a floating action button), use a shadow with a blur radius of at least 32px and an opacity of 4–8%. The shadow color should be a tinted version of `on-surface` (#191c1e), never pure black.\n*   **The \\"Ghost Border\\" Fallback:** If a border is required for accessibility, it must be a \\"Ghost Border.\\" Use the `outline-variant` token at 15% opacity. High-contrast, 100% opaque borders are strictly forbidden.\n\n---\n\n## 5. Component Guidelines\n\n### Buttons\n*   **Primary:** Pill-shaped (`rounded-full`), using the Signature Texture gradient. Typography: `title-sm` in `on-primary`.\n*   **Secondary:** Pill-shaped, `surface-container-high` background with `primary` text. No border.\n*   **Interaction:** On hover, primary buttons should subtly shift in tonal depth rather than changing color entirely.\n\n### Cards & Financial Lists\n*   **Structure:** 12px corner radius (`DEFAULT`).\n*   **The Divider Rule:** Forbid the use of divider lines between list items. Instead, use 16px–24px of vertical whitespace or a subtle background shift to `surface-container-low` on hover.\n*   **Financial Figures:** Always use tabular numbers (monospaced digits) for columns of figures to ensure decimal points align perfectly.\n\n### Input Fields\n*   **Style:** Minimalist. Use `surface-container-highest` for the field background. \n*   **State:** On focus, the field should transition to `surface-container-lowest` (#ffffff) with a 2px `primary` \\"Ghost Border\\" at 20% opacity. \n\n### Specialized Ledger Components\n*   **Transaction Chips:** Use `secondary_container` (#a0f399) for \\"Credit\\" and `tertiary_container` (#c42627) for \\"Debit.\\" Keep the labels in `on-secondary-container` and `on-tertiary-container` respectively for high-contrast accessibility.\n*   **The Progress Ribbon:** Use a thin 4px `primary` bar at the very top of cards to indicate \\"Pending\\" or \\"Active\\" status, maintaining the architectural feel.\n\n---\n\n## 6. Do’s and Don’ts\n\n### Do\n*   **Do** embrace whitespace. If you think there's enough room, add 8px more.\n*   **Do** use `surface-dim` for inactive or disabled states to maintain the tonal aesthetic.\n*   **Do** align all financial figures to the right in data tables.\n*   **Do** use Glassmorphism for mobile navigation bars to let the \\"ledger paper\\" scroll underneath.\n\n### Don’t\n*   **Don’t** use 1px solid borders to \\"box in\\" content. It breaks the \\"Airy\\" atmosphere.\n*   **Don’t** use standard Material shadows. They are too heavy for this system.\n*   **Don’t** use vibrant, saturated colors for backgrounds. Stick to the Warm Light Grey `surface` tones.\n*   **Don’t** mix typography families. Headlines are Manrope; everything else is Inter.\",\"colorVariant\":\"FIDELITY\",\"overridePrimaryColor\":\"#1565C0\",\"overrideSecondaryColor\":\"#2E7D32\",\"overrideTertiaryColor\":\"#C62828\",\"overrideNeutralColor\":\"#F2F3F5\",\"spacingScale\":3},\"deviceType\":\"MOBILE\",\"screenType\":\"DESIGN\",\"screenMetadata\":{\"agentType\":\"PRO_AGENT\",\"status\":\"COMPLETE\"},\"designSystem\":{\"name\":\"assets/0afacc75aa8c43768c8dee2435d5edf0\",\"designSystem\":{\"displayName\":\"Axiom Ledger\",\"theme\":{\"colorMode\":\"LIGHT\",\"font\":\"MANROPE\",\"roundness\":\"ROUND_FULL\",\"customColor\":\"#1565C0\",\"headlineFont\":\"MANROPE\",\"bodyFont\":\"INTER\",\"labelFont\":\"INTER\",\"namedColors\":{\"background\":\"#f8f9fb\",\"error\":\"#ba1a1a\",\"error_container\":\"#ffdad6\",\"inverse_on_surface\":\"#f0f1f3\",\"inverse_primary\":\"#a9c7ff\",\"inverse_surface\":\"#2e3132\",\"on_background\":\"#191c1e\",\"on_error\":\"#ffffff\",\"on_error_container\":\"#93000a\",\"on_primary\":\"#ffffff\",\"on_primary_container\":\"#dae5ff\",\"on_primary_fixed\":\"#001b3d\",\"on_primary_fixed_variant\":\"#00468c\",\"on_secondary\":\"#ffffff\",\"on_secondary_container\":\"#217128\",\"on_secondary_fixed\":\"#002204\",\"on_secondary_fixed_variant\":\"#005312\",\"on_surface\":\"#191c1e\",\"on_surface_variant\":\"#424752\",\"on_tertiary\":\"#ffffff\",\"on_tertiary_container\":\"#ffddd9\",\"on_tertiary_fixed\":\"#410003\",\"on_tertiary_fixed_variant\":\"#93000e\",\"outline\":\"#727783\",\"outline_variant\":\"#c2c6d4\",\"primary\":\"#004d99\",\"primary_container\":\"#1565c0\",\"primary_fixed\":\"#d6e3ff\",\"primary_fixed_dim\":\"#a9c7ff\",\"secondary\":\"#1b6d24\",\"secondary_container\":\"#a0f399\",\"secondary_fixed\":\"#a3f69c\",\"secondary_fixed_dim\":\"#88d982\",\"surface\":\"#f8f9fb\",\"surface_bright\":\"#f8f9fb\",\"surface_container\":\"#edeef0\",\"surface_container_high\":\"#e7e8ea\",\"surface_container_highest\":\"#e1e2e4\",\"surface_container_low\":\"#f3f4f6\",\"surface_container_lowest\":\"#ffffff\",\"surface_dim\":\"#d9dadc\",\"surface_tint\":\"#005db7\",\"surface_variant\":\"#e1e2e4\",\"tertiary\":\"#a00312\",\"tertiary_container\":\"#c42627\",\"tertiary_fixed\":\"#ffdad6\",\"tertiary_fixed_dim\":\"#ffb4ac\"},\"designMd\":\"# Design System Specification: The Modern Ledger\n\n## 1. Overview & Creative North Star\n**Creative North Star: \\"The Architectural Ledger\\"**\n\nThis design system moves away from the cluttered, line-heavy spreadsheets of the past. Instead, we are treating the financial interface as a piece of high-end editorial design. The \\"Modern Physical Ledger\\" metaphor is not about skeuomorphism; it is about the *weight* and *tactility* of fine stationery. \n\nWe achieve a premium feel through **Architectural Whitespace** and **Tonal Depth**. By breaking the rigid \\"grid-of-boxes\\" mentality and embracing intentional asymmetry and layered surfaces, we create an environment that feels both authoritative and airy. We don't use lines to separate data; we use light and shadow—the way a physical page rests upon another.\n\n---\n\n## 2. Colors & Surface Logic\n\nOur palette is anchored by the deep, intellectual `primary` (#004d99) and supported by functional `secondary` (Credit) and `tertiary` (Debit) tones. However, the soul of the system lies in its neutrals.\n\n### The \\"No-Line\\" Rule\n**Explicit Instruction:** 1px solid borders are prohibited for sectioning. \nBoundaries must be defined through background color shifts or subtle tonal transitions. To separate a sidebar from a main feed, transition from `surface` to `surface-container-low`. To highlight a specific ledger entry, use `surface-container-highest` against a `surface` background.\n\n### Surface Hierarchy & Nesting\nTreat the UI as a series of physical layers. We use the Material surface tiers to create \\"nested\\" depth:\n*   **Base Layer:** `surface` (#f8f9fb) – The desk upon which everything sits.\n*   **Section Layer:** `surface-container-low` (#f3f4f6) – The primary ledger sheet.\n*   **Content Layer:** `surface-container-highest` (#e1e2e4) – Focused information cards.\n*   **Interaction Layer:** `surface-container-lowest` (#ffffff) – Used for elements that need to \\"pop\\" or draw immediate focus, such as active input fields.\n\n### The \\"Glass & Gradient\\" Rule\nTo elevate the experience beyond \\"standard utilitarian,\\" use Glassmorphism for floating elements (drawers, floating action buttons, or modals). Apply a semi-transparent `surface` color with a `backdrop-blur` of 20px. \n\nFor high-impact areas, use a subtle **Signature Texture**: A linear gradient from `primary` (#004d99) to `primary-container` (#1565c0) at a 135-degree angle. This adds \\"soul\\" and a professional sheen to hero sections and primary CTAs.\n\n---\n\n## 3. Typography: Editorial Authority\n\nWe use two distinct typefaces to balance character with precision.\n\n*   **Display & Headlines (Manrope):** This is our \\"Editorial\\" voice. Manrope’s geometric yet warm curves provide an authoritative, modern feel. \n    *   *Usage:* Use `display-lg` and `headline-md` for account balances and section headers to create a sense of scale and importance.\n*   **Body & Titles (Inter):** Our \\"Functional\\" voice. Inter is designed for maximum legibility at small sizes, crucial for dense financial figures.\n    *   *Usage:* All transactional data, ledger entries, and labels use the Inter scale (`body-md`, `label-sm`).\n\n**Hierarchy Strategy:** Use extreme contrast in scale. A large `display-md` balance paired with a tiny, all-caps `label-md` creates a premium, high-fashion look that makes the data feel curated rather than just \\"listed.\\"\n\n---\n\n## 4. Elevation & Depth: Tonal Layering\n\nTraditional drop shadows are often messy. In this system, depth is achieved through **Tonal Layering**.\n\n*   **The Layering Principle:** Place a `surface-container-lowest` (#ffffff) card on a `surface-container-low` (#f3f4f6) section. This creates a soft, natural \\"lift\\" without a single shadow.\n*   **Ambient Shadows:** When an element must float (e.g., a modal or a floating action button), use a shadow with a blur radius of at least 32px and an opacity of 4–8%. The shadow color should be a tinted version of `on-surface` (#191c1e), never pure black.\n*   **The \\"Ghost Border\\" Fallback:** If a border is required for accessibility, it must be a \\"Ghost Border.\\" Use the `outline-variant` token at 15% opacity. High-contrast, 100% opaque borders are strictly forbidden.\n\n---\n\n## 5. Component Guidelines\n\n### Buttons\n*   **Primary:** Pill-shaped (`rounded-full`), using the Signature Texture gradient. Typography: `title-sm` in `on-primary`.\n*   **Secondary:** Pill-shaped, `surface-container-high` background with `primary` text. No border.\n*   **Interaction:** On hover, primary buttons should subtly shift in tonal depth rather than changing color entirely.\n\n### Cards & Financial Lists\n*   **Structure:** 12px corner radius (`DEFAULT`).\n*   **The Divider Rule:** Forbid the use of divider lines between list items. Instead, use 16px–24px of vertical whitespace or a subtle background shift to `surface-container-low` on hover.\n*   **Financial Figures:** Always use tabular numbers (monospaced digits) for columns of figures to ensure decimal points align perfectly.\n\n### Input Fields\n*   **Style:** Minimalist. Use `surface-container-highest` for the field background. \n*   **State:** On focus, the field should transition to `surface-container-lowest` (#ffffff) with a 2px `primary` \\"Ghost Border\\" at 20% opacity. \n\n### Specialized Ledger Components\n*   **Transaction Chips:** Use `secondary_container` (#a0f399) for \\"Credit\\" and `tertiary_container` (#c42627) for \\"Debit.\\" Keep the labels in `on-secondary-container` and `on-tertiary-container` respectively for high-contrast accessibility.\n*   **The Progress Ribbon:** Use a thin 4px `primary` bar at the very top of cards to indicate \\"Pending\\" or \\"Active\\" status, maintaining the architectural feel.\n\n---\n\n## 6. Do’s and Don’ts\n\n### Do\n*   **Do** embrace whitespace. If you think there's enough room, add 8px more.\n*   **Do** use `surface-dim` for inactive or disabled states to maintain the tonal aesthetic.\n*   **Do** align all financial figures to the right in data tables.\n*   **Do** use Glassmorphism for mobile navigation bars to let the \\"ledger paper\\" scroll underneath.\n\n### Don’t\n*   **Don’t** use 1px solid borders to \\"box in\\" content. It breaks the \\"Airy\\" atmosphere.\n*   **Don’t** use standard Material shadows. They are too heavy for this system.\n*   **Don’t** use vibrant, saturated colors for backgrounds. Stick to the Warm Light Grey `surface` tones.\n*   **Don’t** mix typography families. Headlines are Manrope; everything else is Inter.\",\"colorVariant\":\"FIDELITY\",\"overridePrimaryColor\":\"#1565C0\",\"overrideSecondaryColor\":\"#2E7D32\",\"overrideTertiaryColor\":\"#C62828\",\"overrideNeutralColor\":\"#F2F3F5\",\"spacingScale\":3}},\"version\":\"1\"}}],\"theme\":{}}},{\"text\":\"I've completed the first screen of the KhataPro feature tour: **\\"Track every rupee.\\"**\n\nThis slide introduces users to the core ledger functionality with a professional, \\"modern physical ledger\\" aesthetic. \n\n### Key Design Features:\n- **Financial Clarity**: The central smartphone illustration features a mini ledger with clearly color-coded entries (green for income, blue for expenses) and a prominent action button.\n- **Consistent Branding**: Adheres to the KhataPro palette with Deep Blue (#1565C0) and Secondary Green (#2E7D32), set against a clean, airy light grey background.\n- **Intuitive Onboarding**: Includes a clear 3-dot progress indicator and a high-contrast sticky footer with a pill-shaped \\"Next\\" button and \\"Skip\\" link for easy navigation.\n- **Material 3 Principles**: Uses stadium-shaped buttons and generous spacing to ensure the interface is accessible and trustworthy for small business owners.\n\nYou can view the new design on the canvas. Would you like me to generate the second slide for the **\\"Send reminders easily\\"** feature next?\"},{\"suggestion\":\"Generate slide 2: \\"Send reminders easily\\"\"},{\"suggestion\":\"Refine the illustration style\"},{\"suggestion\":\"Switch to Dark Mode concept\"}]}","type":"text"}],"structuredContent":{"outputComponents":[{"designSystem":{"designSystem":{"displayName":"Axiom Ledger","theme":{"bodyFont":"INTER","colorMode":"LIGHT","colorVariant":"FIDELITY","customColor":"#1565C0","designMd":"# Design System Specification: The Modern Ledger
+
+## 1. Overview & Creative North Star
+**Creative North Star: \"The Architectural Ledger\"**
+
+This design system moves away from the cluttered, line-heavy spreadsheets of the past. Instead, we are treating the financial interface as a piece of high-end editorial design. The \"Modern Physical Ledger\" metaphor is not about skeuomorphism; it is about the *weight* and *tactility* of fine stationery. 
+
+We achieve a premium feel through **Architectural Whitespace** and **Tonal Depth**. By breaking the rigid \"grid-of-boxes\" mentality and embracing intentional asymmetry and layered surfaces, we create an environment that feels both authoritative and airy. We don't use lines to separate data; we use light and shadow—the way a physical page rests upon another.
+
+---
+
+## 2. Colors & Surface Logic
+
+Our palette is anchored by the deep, intellectual `primary` (#004d99) and supported by functional `secondary` (Credit) and `tertiary` (Debit) tones. However, the soul of the system lies in its neutrals.
+
+### The \"No-Line\" Rule
+**Explicit Instruction:** 1px solid borders are prohibited for sectioning. 
+Boundaries must be defined through background color shifts or subtle tonal transitions. To separate a sidebar from a main feed, transition from `surface` to `surface-container-low`. To highlight a specific ledger entry, use `surface-container-highest` against a `surface` background.
+
+### Surface Hierarchy & Nesting
+Treat the UI as a series of physical layers. We use the Material surface tiers to create \"nested\" depth:
+*   **Base Layer:** `surface` (#f8f9fb) – The desk upon which everything sits.
+*   **Section Layer:** `surface-container-low` (#f3f4f6) – The primary ledger sheet.
+*   **Content Layer:** `surface-container-highest` (#e1e2e4) – Focused information cards.
+*   **Interaction Layer:** `surface-container-lowest` (#ffffff) – Used for elements that need to \"pop\" or draw immediate focus, such as active input fields.
+
+### The \"Glass & Gradient\" Rule
+To elevate the experience beyond \"standard utilitarian,\" use Glassmorphism for floating elements (drawers, floating action buttons, or modals). Apply a semi-transparent `surface` color with a `backdrop-blur` of 20px. 
+
+For high-impact areas, use a subtle **Signature Texture**: A linear gradient from `primary` (#004d99) to `primary-container` (#1565c0) at a 135-degree angle. This adds \"soul\" and a professional sheen to hero sections and primary CTAs.
+
+---
+
+## 3. Typography: Editorial Authority
+
+We use two distinct typefaces to balance character with precision.
+
+*   **Display & Headlines (Manrope):** This is our \"Editorial\" voice. Manrope’s geometric yet warm curves provide an authoritative, modern feel. 
+    *   *Usage:* Use `display-lg` and `headline-md` for account balances and section headers to create a sense of scale and importance.
+*   **Body & Titles (Inter):** Our \"Functional\" voice. Inter is designed for maximum legibility at small sizes, crucial for dense financial figures.
+    *   *Usage:* All transactional data, ledger entries, and labels use the Inter scale (`body-md`, `label-sm`).
+
+**Hierarchy Strategy:** Use extreme contrast in scale. A large `display-md` balance paired with a tiny, all-caps `label-md` creates a premium, high-fashion look that makes the data feel curated rather than just \"listed.\"
+
+---
+
+## 4. Elevation & Depth: Tonal Layering
+
+Traditional drop shadows are often messy. In this system, depth is achieved through **Tonal Layering**.
+
+*   **The Layering Principle:** Place a `surface-container-lowest` (#ffffff) card on a `surface-container-low` (#f3f4f6) section. This creates a soft, natural \"lift\" without a single shadow.
+*   **Ambient Shadows:** When an element must float (e.g., a modal or a floating action button), use a shadow with a blur radius of at least 32px and an opacity of 4–8%. The shadow color should be a tinted version of `on-surface` (#191c1e), never pure black.
+*   **The \"Ghost Border\" Fallback:** If a border is required for accessibility, it must be a \"Ghost Border.\" Use the `outline-variant` token at 15% opacity. High-contrast, 100% opaque borders are strictly forbidden.
+
+---
+
+## 5. Component Guidelines
+
+### Buttons
+*   **Primary:** Pill-shaped (`rounded-full`), using the Signature Texture gradient. Typography: `title-sm` in `on-primary`.
+*   **Secondary:** Pill-shaped, `surface-container-high` background with `primary` text. No border.
+*   **Interaction:** On hover, primary buttons should subtly shift in tonal depth rather than changing color entirely.
+
+### Cards & Financial Lists
+*   **Structure:** 12px corner radius (`DEFAULT`).
+*   **The Divider Rule:** Forbid the use of divider lines between list items. Instead, use 16px–24px of vertical whitespace or a subtle background shift to `surface-container-low` on hover.
+*   **Financial Figures:** Always use tabular numbers (monospaced digits) for columns of figures to ensure decimal points align perfectly.
+
+### Input Fields
+*   **Style:** Minimalist. Use `surface-container-highest` for the field background. 
+*   **State:** On focus, the field should transition to `surface-container-lowest` (#ffffff) with a 2px `primary` \"Ghost Border\" at 20% opacity. 
+
+### Specialized Ledger Components
+*   **Transaction Chips:** Use `secondary_container` (#a0f399) for \"Credit\" and `tertiary_container` (#c42627) for \"Debit.\" Keep the labels in `on-secondary-container` and `on-tertiary-container` respectively for high-contrast accessibility.
+*   **The Progress Ribbon:** Use a thin 4px `primary` bar at the very top of cards to indicate \"Pending\" or \"Active\" status, maintaining the architectural feel.
+
+---
+
+## 6. Do’s and Don’ts
+
+### Do
+*   **Do** embrace whitespace. If you think there's enough room, add 8px more.
+*   **Do** use `surface-dim` for inactive or disabled states to maintain the tonal aesthetic.
+*   **Do** align all financial figures to the right in data tables.
+*   **Do** use Glassmorphism for mobile navigation bars to let the \"ledger paper\" scroll underneath.
+
+### Don’t
+*   **Don’t** use 1px solid borders to \"box in\" content. It breaks the \"Airy\" atmosphere.
+*   **Don’t** use standard Material shadows. They are too heavy for this system.
+*   **Don’t** use vibrant, saturated colors for backgrounds. Stick to the Warm Light Grey `surface` tones.
+*   **Don’t** mix typography families. Headlines are Manrope; everything else is Inter.","font":"MANROPE","headlineFont":"MANROPE","labelFont":"INTER","namedColors":{"background":"#f8f9fb","error":"#ba1a1a","error_container":"#ffdad6","inverse_on_surface":"#f0f1f3","inverse_primary":"#a9c7ff","inverse_surface":"#2e3132","on_background":"#191c1e","on_error":"#ffffff","on_error_container":"#93000a","on_primary":"#ffffff","on_primary_container":"#dae5ff","on_primary_fixed":"#001b3d","on_primary_fixed_variant":"#00468c","on_secondary":"#ffffff","on_secondary_container":"#217128","on_secondary_fixed":"#002204","on_secondary_fixed_variant":"#005312","on_surface":"#191c1e","on_surface_variant":"#424752","on_tertiary":"#ffffff","on_tertiary_container":"#ffddd9","on_tertiary_fixed":"#410003","on_tertiary_fixed_variant":"#93000e","outline":"#727783","outline_variant":"#c2c6d4","primary":"#004d99","primary_container":"#1565c0","primary_fixed":"#d6e3ff","primary_fixed_dim":"#a9c7ff","secondary":"#1b6d24","secondary_container":"#a0f399","secondary_fixed":"#a3f69c","secondary_fixed_dim":"#88d982","surface":"#f8f9fb","surface_bright":"#f8f9fb","surface_container":"#edeef0","surface_container_high":"#e7e8ea","surface_container_highest":"#e1e2e4","surface_container_low":"#f3f4f6","surface_container_lowest":"#ffffff","surface_dim":"#d9dadc","surface_tint":"#005db7","surface_variant":"#e1e2e4","tertiary":"#a00312","tertiary_container":"#c42627","tertiary_fixed":"#ffdad6","tertiary_fixed_dim":"#ffb4ac"},"overrideNeutralColor":"#F2F3F5","overridePrimaryColor":"#1565C0","overrideSecondaryColor":"#2E7D32","overrideTertiaryColor":"#C62828","roundness":"ROUND_FULL","spacingScale":3}},"name":"assets/0afacc75aa8c43768c8dee2435d5edf0","version":"1"}},{"design":{"screens":[{"designSystem":{"designSystem":{"displayName":"Axiom Ledger","theme":{"bodyFont":"INTER","colorMode":"LIGHT","colorVariant":"FIDELITY","customColor":"#1565C0","designMd":"# Design System Specification: The Modern Ledger
+
+## 1. Overview & Creative North Star
+**Creative North Star: \"The Architectural Ledger\"**
+
+This design system moves away from the cluttered, line-heavy spreadsheets of the past. Instead, we are treating the financial interface as a piece of high-end editorial design. The \"Modern Physical Ledger\" metaphor is not about skeuomorphism; it is about the *weight* and *tactility* of fine stationery. 
+
+We achieve a premium feel through **Architectural Whitespace** and **Tonal Depth**. By breaking the rigid \"grid-of-boxes\" mentality and embracing intentional asymmetry and layered surfaces, we create an environment that feels both authoritative and airy. We don't use lines to separate data; we use light and shadow—the way a physical page rests upon another.
+
+---
+
+## 2. Colors & Surface Logic
+
+Our palette is anchored by the deep, intellectual `primary` (#004d99) and supported by functional `secondary` (Credit) and `tertiary` (Debit) tones. However, the soul of the system lies in its neutrals.
+
+### The \"No-Line\" Rule
+**Explicit Instruction:** 1px solid borders are prohibited for sectioning. 
+Boundaries must be defined through background color shifts or subtle tonal transitions. To separate a sidebar from a main feed, transition from `surface` to `surface-container-low`. To highlight a specific ledger entry, use `surface-container-highest` against a `surface` background.
+
+### Surface Hierarchy & Nesting
+Treat the UI as a series of physical layers. We use the Material surface tiers to create \"nested\" depth:
+*   **Base Layer:** `surface` (#f8f9fb) – The desk upon which everything sits.
+*   **Section Layer:** `surface-container-low` (#f3f4f6) – The primary ledger sheet.
+*   **Content Layer:** `surface-container-highest` (#e1e2e4) – Focused information cards.
+*   **Interaction Layer:** `surface-container-lowest` (#ffffff) – Used for elements that need to \"pop\" or draw immediate focus, such as active input fields.
+
+### The \"Glass & Gradient\" Rule
+To elevate the experience beyond \"standard utilitarian,\" use Glassmorphism for floating elements (drawers, floating action buttons, or modals). Apply a semi-transparent `surface` color with a `backdrop-blur` of 20px. 
+
+For high-impact areas, use a subtle **Signature Texture**: A linear gradient from `primary` (#004d99) to `primary-container` (#1565c0) at a 135-degree angle. This adds \"soul\" and a professional sheen to hero sections and primary CTAs.
+
+---
+
+## 3. Typography: Editorial Authority
+
+We use two distinct typefaces to balance character with precision.
+
+*   **Display & Headlines (Manrope):** This is our \"Editorial\" voice. Manrope’s geometric yet warm curves provide an authoritative, modern feel. 
+    *   *Usage:* Use `display-lg` and `headline-md` for account balances and section headers to create a sense of scale and importance.
+*   **Body & Titles (Inter):** Our \"Functional\" voice. Inter is designed for maximum legibility at small sizes, crucial for dense financial figures.
+    *   *Usage:* All transactional data, ledger entries, and labels use the Inter scale (`body-md`, `label-sm`).
+
+**Hierarchy Strategy:** Use extreme contrast in scale. A large `display-md` balance paired with a tiny, all-caps `label-md` creates a premium, high-fashion look that makes the data feel curated rather than just \"listed.\"
+
+---
+
+## 4. Elevation & Depth: Tonal Layering
+
+Traditional drop shadows are often messy. In this system, depth is achieved through **Tonal Layering**.
+
+*   **The Layering Principle:** Place a `surface-container-lowest` (#ffffff) card on a `surface-container-low` (#f3f4f6) section. This creates a soft, natural \"lift\" without a single shadow.
+*   **Ambient Shadows:** When an element must float (e.g., a modal or a floating action button), use a shadow with a blur radius of at least 32px and an opacity of 4–8%. The shadow color should be a tinted version of `on-surface` (#191c1e), never pure black.
+*   **The \"Ghost Border\" Fallback:** If a border is required for accessibility, it must be a \"Ghost Border.\" Use the `outline-variant` token at 15% opacity. High-contrast, 100% opaque borders are strictly forbidden.
+
+---
+
+## 5. Component Guidelines
+
+### Buttons
+*   **Primary:** Pill-shaped (`rounded-full`), using the Signature Texture gradient. Typography: `title-sm` in `on-primary`.
+*   **Secondary:** Pill-shaped, `surface-container-high` background with `primary` text. No border.
+*   **Interaction:** On hover, primary buttons should subtly shift in tonal depth rather than changing color entirely.
+
+### Cards & Financial Lists
+*   **Structure:** 12px corner radius (`DEFAULT`).
+*   **The Divider Rule:** Forbid the use of divider lines between list items. Instead, use 16px–24px of vertical whitespace or a subtle background shift to `surface-container-low` on hover.
+*   **Financial Figures:** Always use tabular numbers (monospaced digits) for columns of figures to ensure decimal points align perfectly.
+
+### Input Fields
+*   **Style:** Minimalist. Use `surface-container-highest` for the field background. 
+*   **State:** On focus, the field should transition to `surface-container-lowest` (#ffffff) with a 2px `primary` \"Ghost Border\" at 20% opacity. 
+
+### Specialized Ledger Components
+*   **Transaction Chips:** Use `secondary_container` (#a0f399) for \"Credit\" and `tertiary_container` (#c42627) for \"Debit.\" Keep the labels in `on-secondary-container` and `on-tertiary-container` respectively for high-contrast accessibility.
+*   **The Progress Ribbon:** Use a thin 4px `primary` bar at the very top of cards to indicate \"Pending\" or \"Active\" status, maintaining the architectural feel.
+
+---
+
+## 6. Do’s and Don’ts
+
+### Do
+*   **Do** embrace whitespace. If you think there's enough room, add 8px more.
+*   **Do** use `surface-dim` for inactive or disabled states to maintain the tonal aesthetic.
+*   **Do** align all financial figures to the right in data tables.
+*   **Do** use Glassmorphism for mobile navigation bars to let the \"ledger paper\" scroll underneath.
+
+### Don’t
+*   **Don’t** use 1px solid borders to \"box in\" content. It breaks the \"Airy\" atmosphere.
+*   **Don’t** use standard Material shadows. They are too heavy for this system.
+*   **Don’t** use vibrant, saturated colors for backgrounds. Stick to the Warm Light Grey `surface` tones.
+*   **Don’t** mix typography families. Headlines are Manrope; everything else is Inter.","font":"MANROPE","headlineFont":"MANROPE","labelFont":"INTER","namedColors":{"background":"#f8f9fb","error":"#ba1a1a","error_container":"#ffdad6","inverse_on_surface":"#f0f1f3","inverse_primary":"#a9c7ff","inverse_surface":"#2e3132","on_background":"#191c1e","on_error":"#ffffff","on_error_container":"#93000a","on_primary":"#ffffff","on_primary_container":"#dae5ff","on_primary_fixed":"#001b3d","on_primary_fixed_variant":"#00468c","on_secondary":"#ffffff","on_secondary_container":"#217128","on_secondary_fixed":"#002204","on_secondary_fixed_variant":"#005312","on_surface":"#191c1e","on_surface_variant":"#424752","on_tertiary":"#ffffff","on_tertiary_container":"#ffddd9","on_tertiary_fixed":"#410003","on_tertiary_fixed_variant":"#93000e","outline":"#727783","outline_variant":"#c2c6d4","primary":"#004d99","primary_container":"#1565c0","primary_fixed":"#d6e3ff","primary_fixed_dim":"#a9c7ff","secondary":"#1b6d24","secondary_container":"#a0f399","secondary_fixed":"#a3f69c","secondary_fixed_dim":"#88d982","surface":"#f8f9fb","surface_bright":"#f8f9fb","surface_container":"#edeef0","surface_container_high":"#e7e8ea","surface_container_highest":"#e1e2e4","surface_container_low":"#f3f4f6","surface_container_lowest":"#ffffff","surface_dim":"#d9dadc","surface_tint":"#005db7","surface_variant":"#e1e2e4","tertiary":"#a00312","tertiary_container":"#c42627","tertiary_fixed":"#ffdad6","tertiary_fixed_dim":"#ffb4ac"},"overrideNeutralColor":"#F2F3F5","overridePrimaryColor":"#1565C0","overrideSecondaryColor":"#2E7D32","overrideTertiaryColor":"#C62828","roundness":"ROUND_FULL","spacingScale":3}},"name":"assets/0afacc75aa8c43768c8dee2435d5edf0","version":"1"},"deviceType":"MOBILE","generatedBy":"figaro_agent","height":"1768","htmlCode":{"downloadUrl":"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzRkM2YzYmNkMzI5YTRmYmVhNDNjNDczOTE2ZGU0MDZmEgsSBxCyidzrwAoYAZIBIwoKcHJvamVjdF9pZBIVQhMzODIzMDIwMjA0MzEwOTM3NTQ0&filename=&opi=96797242","mimeType":"text/html","name":"projects/3823020204310937544/files/a57783c33f86460093795066c1ed0c86"},"id":"9eefbd00911a4604a35f14bd05e953d8","name":"projects/3823020204310937544/screens/9eefbd00911a4604a35f14bd05e953d8","prompt":"KhataPro tour screen 1 of 3: 'Track every rupee'.
+Background: Solid #F2F3F5 light grey.
+Top-center: 3 horizontal dots progress indicator (Slide 1 active: Deep Blue #1565C0).
+Center: Slightly tilted smartphone wireframe illustration. Inside phone: A mini ledger list with two rows. Row 1: green '+₹1,250' text (Secondary Green #2E7D32). Row 2: blue '-₹400' text. Bottom of phone has a circular FAB button in primary blue.
+Headline: 'Track every rupee' in large bold dark text, center-aligned.
+Body copy: 'Add customers, record what they owe you or you owe them. Balances update instantly.' in grey, center-aligned.
+Swipe hint: 'SWIPE TO EXPLORE' with small arrows, subtle opacity.
+Sticky Footer: Full-width white bar at bottom. Primary Button: 'Next' (Blue fill #1565C0, white text, pill-shaped/9999px radius). Below button: 'Skip' text link in grey.
+Atmosphere: Professional, clean, airy, financial ledger aesthetic.","screenMetadata":{"agentType":"PRO_AGENT","status":"COMPLETE"},"screenType":"DESIGN","screenshot":{"downloadUrl":"https://lh3.googleusercontent.com/aida/ADBb0ujMLv5aTowllys2xka6Fc_8Tn2e49TbLgJxe8T1RFeLXxHPctsYN7jK27kHTPWl5NhsmEBSqofVqD_zZbjeZ03o2DGyCdPtgbChWZ7SW04ZA6-SeWatT1uykuM8UmsbCU-Ef8NgVj1ALNX-VkCqL_cY9q8PQy5fg2XYWUdS1lVEokDMLObVtARYP8YKpqdxcFZGPUXA05iW-kM1LWUSjUzpJpDWqMJFCaJDjIsTwouPj9WqT_fQhldHyA","name":"projects/3823020204310937544/files/675a5b71825544cb8a6a5a8bcf131b77"},"theme":{"bodyFont":"INTER","colorMode":"LIGHT","colorVariant":"FIDELITY","customColor":"#1565C0","designMd":"# Design System Specification: The Modern Ledger
+
+## 1. Overview & Creative North Star
+**Creative North Star: \"The Architectural Ledger\"**
+
+This design system moves away from the cluttered, line-heavy spreadsheets of the past. Instead, we are treating the financial interface as a piece of high-end editorial design. The \"Modern Physical Ledger\" metaphor is not about skeuomorphism; it is about the *weight* and *tactility* of fine stationery. 
+
+We achieve a premium feel through **Architectural Whitespace** and **Tonal Depth**. By breaking the rigid \"grid-of-boxes\" mentality and embracing intentional asymmetry and layered surfaces, we create an environment that feels both authoritative and airy. We don't use lines to separate data; we use light and shadow—the way a physical page rests upon another.
+
+---
+
+## 2. Colors & Surface Logic
+
+Our palette is anchored by the deep, intellectual `primary` (#004d99) and supported by functional `secondary` (Credit) and `tertiary` (Debit) tones. However, the soul of the system lies in its neutrals.
+
+### The \"No-Line\" Rule
+**Explicit Instruction:** 1px solid borders are prohibited for sectioning. 
+Boundaries must be defined through background color shifts or subtle tonal transitions. To separate a sidebar from a main feed, transition from `surface` to `surface-container-low`. To highlight a specific ledger entry, use `surface-container-highest` against a `surface` background.
+
+### Surface Hierarchy & Nesting
+Treat the UI as a series of physical layers. We use the Material surface tiers to create \"nested\" depth:
+*   **Base Layer:** `surface` (#f8f9fb) – The desk upon which everything sits.
+*   **Section Layer:** `surface-container-low` (#f3f4f6) – The primary ledger sheet.
+*   **Content Layer:** `surface-container-highest` (#e1e2e4) – Focused information cards.
+*   **Interaction Layer:** `surface-container-lowest` (#ffffff) – Used for elements that need to \"pop\" or draw immediate focus, such as active input fields.
+
+### The \"Glass & Gradient\" Rule
+To elevate the experience beyond \"standard utilitarian,\" use Glassmorphism for floating elements (drawers, floating action buttons, or modals). Apply a semi-transparent `surface` color with a `backdrop-blur` of 20px. 
+
+For high-impact areas, use a subtle **Signature Texture**: A linear gradient from `primary` (#004d99) to `primary-container` (#1565c0) at a 135-degree angle. This adds \"soul\" and a professional sheen to hero sections and primary CTAs.
+
+---
+
+## 3. Typography: Editorial Authority
+
+We use two distinct typefaces to balance character with precision.
+
+*   **Display & Headlines (Manrope):** This is our \"Editorial\" voice. Manrope’s geometric yet warm curves provide an authoritative, modern feel. 
+    *   *Usage:* Use `display-lg` and `headline-md` for account balances and section headers to create a sense of scale and importance.
+*   **Body & Titles (Inter):** Our \"Functional\" voice. Inter is designed for maximum legibility at small sizes, crucial for dense financial figures.
+    *   *Usage:* All transactional data, ledger entries, and labels use the Inter scale (`body-md`, `label-sm`).
+
+**Hierarchy Strategy:** Use extreme contrast in scale. A large `display-md` balance paired with a tiny, all-caps `label-md` creates a premium, high-fashion look that makes the data feel curated rather than just \"listed.\"
+
+---
+
+## 4. Elevation & Depth: Tonal Layering
+
+Traditional drop shadows are often messy. In this system, depth is achieved through **Tonal Layering**.
+
+*   **The Layering Principle:** Place a `surface-container-lowest` (#ffffff) card on a `surface-container-low` (#f3f4f6) section. This creates a soft, natural \"lift\" without a single shadow.
+*   **Ambient Shadows:** When an element must float (e.g., a modal or a floating action button), use a shadow with a blur radius of at least 32px and an opacity of 4–8%. The shadow color should be a tinted version of `on-surface` (#191c1e), never pure black.
+*   **The \"Ghost Border\" Fallback:** If a border is required for accessibility, it must be a \"Ghost Border.\" Use the `outline-variant` token at 15% opacity. High-contrast, 100% opaque borders are strictly forbidden.
+
+---
+
+## 5. Component Guidelines
+
+### Buttons
+*   **Primary:** Pill-shaped (`rounded-full`), using the Signature Texture gradient. Typography: `title-sm` in `on-primary`.
+*   **Secondary:** Pill-shaped, `surface-container-high` background with `primary` text. No border.
+*   **Interaction:** On hover, primary buttons should subtly shift in tonal depth rather than changing color entirely.
+
+### Cards & Financial Lists
+*   **Structure:** 12px corner radius (`DEFAULT`).
+*   **The Divider Rule:** Forbid the use of divider lines between list items. Instead, use 16px–24px of vertical whitespace or a subtle background shift to `surface-container-low` on hover.
+*   **Financial Figures:** Always use tabular numbers (monospaced digits) for columns of figures to ensure decimal points align perfectly.
+
+### Input Fields
+*   **Style:** Minimalist. Use `surface-container-highest` for the field background. 
+*   **State:** On focus, the field should transition to `surface-container-lowest` (#ffffff) with a 2px `primary` \"Ghost Border\" at 20% opacity. 
+
+### Specialized Ledger Components
+*   **Transaction Chips:** Use `secondary_container` (#a0f399) for \"Credit\" and `tertiary_container` (#c42627) for \"Debit.\" Keep the labels in `on-secondary-container` and `on-tertiary-container` respectively for high-contrast accessibility.
+*   **The Progress Ribbon:** Use a thin 4px `primary` bar at the very top of cards to indicate \"Pending\" or \"Active\" status, maintaining the architectural feel.
+
+---
+
+## 6. Do’s and Don’ts
+
+### Do
+*   **Do** embrace whitespace. If you think there's enough room, add 8px more.
+*   **Do** use `surface-dim` for inactive or disabled states to maintain the tonal aesthetic.
+*   **Do** align all financial figures to the right in data tables.
+*   **Do** use Glassmorphism for mobile navigation bars to let the \"ledger paper\" scroll underneath.
+
+### Don’t
+*   **Don’t** use 1px solid borders to \"box in\" content. It breaks the \"Airy\" atmosphere.
+*   **Don’t** use standard Material shadows. They are too heavy for this system.
+*   **Don’t** use vibrant, saturated colors for backgrounds. Stick to the Warm Light Grey `surface` tones.
+*   **Don’t** mix typography families. Headlines are Manrope; everything else is Inter.","font":"MANROPE","headlineFont":"MANROPE","labelFont":"INTER","namedColors":{"background":"#f8f9fb","error":"#ba1a1a","error_container":"#ffdad6","inverse_on_surface":"#f0f1f3","inverse_primary":"#a9c7ff","inverse_surface":"#2e3132","on_background":"#191c1e","on_error":"#ffffff","on_error_container":"#93000a","on_primary":"#ffffff","on_primary_container":"#dae5ff","on_primary_fixed":"#001b3d","on_primary_fixed_variant":"#00468c","on_secondary":"#ffffff","on_secondary_container":"#217128","on_secondary_fixed":"#002204","on_secondary_fixed_variant":"#005312","on_surface":"#191c1e","on_surface_variant":"#424752","on_tertiary":"#ffffff","on_tertiary_container":"#ffddd9","on_tertiary_fixed":"#410003","on_tertiary_fixed_variant":"#93000e","outline":"#727783","outline_variant":"#c2c6d4","primary":"#004d99","primary_container":"#1565c0","primary_fixed":"#d6e3ff","primary_fixed_dim":"#a9c7ff","secondary":"#1b6d24","secondary_container":"#a0f399","secondary_fixed":"#a3f69c","secondary_fixed_dim":"#88d982","surface":"#f8f9fb","surface_bright":"#f8f9fb","surface_container":"#edeef0","surface_container_high":"#e7e8ea","surface_container_highest":"#e1e2e4","surface_container_low":"#f3f4f6","surface_container_lowest":"#ffffff","surface_dim":"#d9dadc","surface_tint":"#005db7","surface_variant":"#e1e2e4","tertiary":"#a00312","tertiary_container":"#c42627","tertiary_fixed":"#ffdad6","tertiary_fixed_dim":"#ffb4ac"},"overrideNeutralColor":"#F2F3F5","overridePrimaryColor":"#1565C0","overrideSecondaryColor":"#2E7D32","overrideTertiaryColor":"#C62828","roundness":"ROUND_FULL","spacingScale":3},"title":"Tour - Track Every Rupee","width":"780"}],"theme":{}}},{"text":"I've completed the first screen of the KhataPro feature tour: **\"Track every rupee.\"**
+
+This slide introduces users to the core ledger functionality with a professional, \"modern physical ledger\" aesthetic. 
+
+### Key Design Features:
+- **Financial Clarity**: The central smartphone illustration features a mini ledger with clearly color-coded entries (green for income, blue for expenses) and a prominent action button.
+- **Consistent Branding**: Adheres to the KhataPro palette with Deep Blue (#1565C0) and Secondary Green (#2E7D32), set against a clean, airy light grey background.
+- **Intuitive Onboarding**: Includes a clear 3-dot progress indicator and a high-contrast sticky footer with a pill-shaped \"Next\" button and \"Skip\" link for easy navigation.
+- **Material 3 Principles**: Uses stadium-shaped buttons and generous spacing to ensure the interface is accessible and trustworthy for small business owners.
+
+You can view the new design on the canvas. Would you like me to generate the second slide for the **\"Send reminders easily\"** feature next?"},{"suggestion":"Generate slide 2: \"Send reminders easily\""},{"suggestion":"Refine the illustration style"},{"suggestion":"Switch to Dark Mode concept"}],"projectId":"3823020204310937544","sessionId":"16594281925639833187"}}}

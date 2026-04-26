@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Details | KhataPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#EFEDF1",
+                        "tertiary-fixed": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb4ac",
+                        "on-primary": "#ffffff",
+                        "income-container": "#A3F69C",
+                        "surface": "#faf9fd",
+                        "surface-container-high": "#e8e8ec",
+                        "on-tertiary-fixed-variant": "#93000e",
+                        "on-tertiary-container": "#ffddd9",
+                        "on-secondary-fixed": "#002204",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#dae5ff",
+                        "surface-tint": "#005db7",
+                        "income-green": "#2E7D32",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "surface-container-low": "#F4F3F7",
+                        "surface-container-highest": "#e3e2e6",
+                        "outline-variant": "#c2c6d4",
+                        "surface-variant": "#e3e2e6",
+                        "outline": "#74777F",
+                        "expense-container": "#FFDAD6",
+                        "on-surface": "#1a1c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2f3033",
+                        "inverse-primary": "#a9c7ff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary": "#a00312",
+                        "primary": "#004d99",
+                        "secondary-container": "#a0f399",
+                        "secondary-fixed-dim": "#88d982",
+                        "on-secondary-fixed-variant": "#005312",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-bright": "#faf9fd",
+                        "on-error-container": "#93000a",
+                        "secondary": "#1b6d24",
+                        "on-tertiary-fixed": "#410003",
+                        "secondary-fixed": "#a3f69c",
+                        "on-secondary-container": "#217128",
+                        "on-primary-fixed-variant": "#00468c",
+                        "on-expense-container": "#410003",
+                        "on-primary-fixed": "#001b3d",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1565c0",
+                        "tertiary-container": "#c42627",
+                        "on-error": "#ffffff",
+                        "on-income-container": "#002204",
+                        "expense-red": "#C62828",
+                        "on-background": "#1a1c1e",
+                        "surface-dim": "#dad9dd",
+                        "on-surface-variant": "#424752",
+                        "background": "#faf9fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "screen-margin": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "section-gap": "32px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "label-lg": ["Work Sans"],
+                        "headline-lg": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "display-lg": ["Work Sans"],
+                        "title-md": ["Work Sans"],
+                        "label-sm": ["Work Sans"],
+                        "headline-md": ["Work Sans"],
+                        "display-md": ["Work Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .elevation-0 { box-shadow: none; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface flex items-center justify-between px-6 h-16 border-none transition-colors duration-200 ease-in-out">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[#004d99]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Work_Sans'] font-bold text-[22px] leading-[28px] text-[#004d99]">Transaction Details</h1>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[#004d99]" data-icon="share">share</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[#004d99]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-grow px-screen-margin pb-32">
+<!-- Hero Section -->
+<section class="flex flex-col items-center justify-center py-xl">
+<div class="mb-2">
+<h2 class="font-headline-lg text-headline-lg text-income-green">+₹2,000</h2>
+</div>
+<div class="bg-income-container px-4 py-1 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-on-income-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-income-container uppercase tracking-wider">RECEIVED</span>
+</div>
+</section>
+<!-- Customer Row -->
+<section class="flex items-center gap-md py-lg mb-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="font-title-lg text-title-lg text-on-primary">R</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md">Ramesh Kumar</span>
+<span class="font-body-md text-body-md text-on-surface-variant">+91 98765 43210</span>
+</div>
+</section>
+<!-- Details Card -->
+<div class="space-y-4">
+<section class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant transition-colors">
+<div class="space-y-lg">
+<!-- Row: Date -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Date</span>
+<span class="font-body-lg text-body-lg">April 26, 2026</span>
+</div>
+</div>
+<!-- Row: Note -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="notes">notes</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Note</span>
+<span class="font-body-lg text-body-lg leading-relaxed">Grocery payment for March</span>
+</div>
+</div>
+<!-- Row: Type -->
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="sell">sell</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Type</span>
+<div class="mt-1 bg-income-container px-3 py-0.5 rounded-full">
+<span class="font-label-lg text-label-lg text-on-income-container">Income</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Status Card -->
+<section class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="payments">payments</span>
+<span class="font-title-md text-title-md">Payment Status</span>
+</div>
+<div class="bg-income-container px-4 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-on-income-container font-bold">PAID</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Actions -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md px-screen-margin py-lg border-none flex gap-md pb-safe">
+<button class="flex-1 h-12 border-2 border-primary rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="edit">edit</span>
+<span class="font-label-lg text-label-lg text-primary">Edit</span>
+</button>
+<button class="flex-1 h-12 bg-tertiary-container rounded-xl flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="delete">delete</span>
+<span class="font-label-lg text-label-lg text-on-tertiary-container">Delete</span>
+</button>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 -z-10 opacity-30">
+<div class="w-64 h-64 bg-primary-fixed rounded-full blur-[100px]"></div>
+</div>
+<div class="fixed bottom-0 left-0 -z-10 opacity-30">
+<div class="w-64 h-64 bg-secondary-fixed rounded-full blur-[100px]"></div>
+</div>
+</body></html>

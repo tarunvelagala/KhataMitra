@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Backup &amp; Restore - KhataPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#ffddd9",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffdad6",
+                      "tertiary": "#a00312",
+                      "primary-fixed-dim": "#a9c7ff",
+                      "surface-container-high": "#e8e8ec",
+                      "secondary-container": "#a0f399",
+                      "expense-red": "#C62828",
+                      "primary": "#004d99",
+                      "primary-fixed": "#d6e3ff",
+                      "outline-variant": "#C4C6CF",
+                      "on-secondary-fixed-variant": "#005312",
+                      "surface-container-highest": "#E3E2E6",
+                      "surface-tint": "#005db7",
+                      "primary-container": "#1565c0",
+                      "tertiary-fixed-dim": "#ffb4ac",
+                      "on-surface": "#1a1c1e",
+                      "inverse-primary": "#a9c7ff",
+                      "on-surface-variant": "#424752",
+                      "on-income-container": "#002204",
+                      "on-tertiary-fixed": "#410003",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#EFEDF1",
+                      "error-signal": "#BA1A1A",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#00468c",
+                      "on-secondary-fixed": "#002204",
+                      "expense-container": "#FFDAD6",
+                      "on-tertiary-fixed-variant": "#93000e",
+                      "on-expense-container": "#410003",
+                      "secondary-fixed": "#a3f69c",
+                      "on-primary-fixed": "#001b3d",
+                      "on-primary-container": "#dae5ff",
+                      "tertiary-container": "#c42627",
+                      "background": "#faf9fd",
+                      "surface-container-low": "#f4f3f7",
+                      "income-container": "#A3F69C",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "secondary": "#1b6d24",
+                      "inverse-surface": "#2f3033",
+                      "on-background": "#1a1c1e",
+                      "surface-variant": "#e3e2e6",
+                      "surface-bright": "#faf9fd",
+                      "inverse-on-surface": "#f1f0f4",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#dad9dd",
+                      "income-green": "#2E7D32",
+                      "outline": "#74777F",
+                      "surface": "#faf9fd",
+                      "secondary-fixed-dim": "#88d982",
+                      "on-secondary-container": "#217128",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "section-gap": "32px",
+                      "screen-margin": "24px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Work Sans"],
+                      "headline-lg": ["Work Sans"],
+                      "title-md": ["Work Sans"],
+                      "title-lg": ["Work Sans"],
+                      "body-lg": ["Work Sans"],
+                      "label-sm": ["Work Sans"],
+                      "headline-md": ["Work Sans"],
+                      "display-md": ["Work Sans"],
+                      "label-lg": ["Work Sans"],
+                      "display-lg": ["Work Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.5px", "fontWeight": "800"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "1px", "fontWeight": "700"}],
+                      "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                      "display-md": ["45px", {"lineHeight": "52px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<header class="bg-[#faf9fd] dark:bg-[#121316] w-full top-0 sticky z-50 flex items-center px-6 h-16 w-full border-none flat elevation-0">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#EFEDF1] dark:hover:bg-[#1A1B1E] scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[#1565c0] dark:text-[#a9c7ff]">arrow_back</span>
+</button>
+<h1 class="font-['Work_Sans'] font-bold text-[22px] leading-[28px] text-[#1a1c1e] dark:text-[#f1f0f4]">Backup &amp; Restore</h1>
+</div>
+</header>
+<main class="flex-grow overflow-y-auto px-screen-margin py-lg space-y-section-gap pb-32">
+<section class="space-y-md">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest px-xs">Export Data</h2>
+<div class="space-y-md">
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant transition-all hover:border-primary-container">
+<div class="flex items-start gap-md mb-md">
+<div class="bg-primary-container/10 p-sm rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[32px]">table_chart</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Export to CSV</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Compatible with Excel and Google Sheets</p>
+</div>
+</div>
+<button class="w-full h-12 flex items-center justify-center gap-sm border border-primary-container text-primary-container font-label-lg rounded-xl hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export CSV
+                    </button>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant transition-all hover:border-tertiary">
+<div class="flex items-start gap-md mb-md">
+<div class="bg-tertiary-container/10 p-sm rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[32px]">picture_as_pdf</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Export to PDF</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Professional report for sharing</p>
+</div>
+</div>
+<button class="w-full h-12 flex items-center justify-center gap-sm border border-tertiary text-tertiary font-label-lg rounded-xl hover:bg-tertiary/5 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+</section>
+<div class="h-px bg-outline-variant w-full"></div>
+<section class="space-y-md">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest px-xs">Cloud Backup</h2>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center bg-surface-container">
+<img alt="Google Drive" class="w-6 h-6" data-alt="Official Google Drive colorful triangle logo icon on a white background for cloud storage service representation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvjGINdZboN2XryJgihP0DVV4FiYBSVFBTki1ZzwqpKhdE3Fz3ERrGMslrT2Tb6hyCIs6cUfyorOj2Fq-5fvFV2ehglukxtKy7FQ5CBnsUJjc8ycPFc2VjslxscNUs5g5xkv5J7er0a3wRViyxnQcnRd5J5zpE0VeyAESNoGIG0wAdDOnQTS6-On3G-0nfi954kecAa7a3eeWSFF8Yy6HgbRazNb5tj-vFMsndwd9urt0_JpdB2DVfzTLkK3w5ELaV8Gu5OkwsR0M"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Google Drive Backup</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Last backup: Never</p>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-on-surface-variant after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-white"></div>
+</div>
+</div>
+<div class="bg-[#FFF9C4] p-md rounded-xl border border-[#FBC02D]/20 flex gap-md">
+<span class="material-symbols-outlined text-[#F57F17] fill-icon">warning</span>
+<p class="font-body-md text-body-md text-[#5D4037] leading-tight">
+                    Enabling cloud backup requires Google sign-in. This ensures your ledger is automatically synced and recoverable if you lose your phone.
+                </p>
+</div>
+</section>
+<section class="space-y-md">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest px-xs">System Restore</h2>
+<div class="flex flex-col items-start gap-xs">
+<button class="flex items-center gap-sm text-primary-container font-title-md p-xs rounded-lg hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined">backup</span>
+                    Restore from Backup
+                </button>
+<p class="font-label-sm text-label-sm text-error-signal uppercase font-bold px-xs">
+                    (THIS WILL OVERWRITE ALL CURRENT DATA)
+                </p>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 w-full z-50 border-t border-[#C4C6CF] dark:border-[#424752] bg-[#faf9fd] dark:bg-[#121316] flex justify-around items-center h-20 px-2 pb-safe flat elevation-0 md:hidden">
+<button class="flex flex-col items-center justify-center text-[#424752] dark:text-[#c4c6cf] gap-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Work_Sans'] font-semibold text-[11px] tracking-[1px] uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#424752] dark:text-[#c4c6cf] gap-1">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Work_Sans'] font-semibold text-[11px] tracking-[1px] uppercase">Customers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#424752] dark:text-[#c4c6cf] gap-1">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-['Work_Sans'] font-semibold text-[11px] tracking-[1px] uppercase">Reports</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#1565c0] text-white rounded-[9999px] px-5 py-1 gap-1">
+<span class="material-symbols-outlined fill-icon">settings</span>
+<span class="font-['Work_Sans'] font-semibold text-[11px] tracking-[1px] uppercase">Settings</span>
+</button>
+</nav>
+</body></html>
