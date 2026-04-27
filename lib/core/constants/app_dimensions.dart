@@ -40,6 +40,10 @@ abstract final class AppDimensions {
   /// Default / unfocused border width.
   static const double borderDefault = 1;
 
+  // ── Button stack ─────────────────────────────────────────────────
+  /// Gap between a primary FilledButton and a secondary TextButton when stacked.
+  static const double buttonStackGap = 8;
+
   // ── Divider ───────────────────────────────────────────────────────
   static const double dividerThickness = 1;
   static const double dividerSpace = 1;
