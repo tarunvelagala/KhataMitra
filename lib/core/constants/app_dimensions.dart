@@ -51,4 +51,8 @@ abstract final class AppDimensions {
   // ── App bar ───────────────────────────────────────────────────────
   /// Background colour alpha for the frosted-glass app bar effect.
   static const double appBarOpacity = 0.8;
+
+  // ── Badge ─────────────────────────────────────────────────────────
+  /// Alpha for the glass-effect badge background on selection cards.
+  static const double badgeGlassAlpha = 0.08;
 }

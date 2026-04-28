@@ -54,16 +54,16 @@ class SelectionCard extends StatelessWidget {
             width: _kBadgeSize,
             height: _kBadgeSize,
             decoration: BoxDecoration(
-              color: isSelected ? cs.primaryContainer : cs.surfaceContainerHigh,
+              color: isSelected
+                  ? cs.primaryContainer
+                  : cs.onSurface.withValues(alpha: AppDimensions.badgeGlassAlpha),
               borderRadius: BorderRadius.circular(_kBadgeRadius),
             ),
             child: Center(
               child: Text(
                 badge ?? title.characters.first,
                 style: tt.titleSmall?.copyWith(
-                  color: isSelected
-                      ? cs.onPrimaryContainer
-                      : cs.onSurfaceVariant,
+                  color: cs.onSurfaceVariant,
                   fontWeight: FontWeight.w700,
                 ),
               ),
