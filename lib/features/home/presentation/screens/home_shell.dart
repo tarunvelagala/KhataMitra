@@ -19,7 +19,7 @@ class _HomeShellState extends ConsumerState<HomeShell> {
   static const List<Widget> _screens = [
     DashboardScreen(),
     CustomersScreen(),
-    _PlaceholderScreen(icon: Icons.bar_chart_rounded),
+    _PlaceholderScreen(icon: Icons.leaderboard_rounded),
     _PlaceholderScreen(icon: Icons.settings_rounded),
   ];
 
@@ -48,8 +48,8 @@ class _HomeShellState extends ConsumerState<HomeShell> {
               label: l10n.navCustomers,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.bar_chart_outlined),
-              selectedIcon: const Icon(Icons.bar_chart_rounded),
+              icon: const Icon(Icons.leaderboard_outlined),
+              selectedIcon: const Icon(Icons.leaderboard_rounded),
               label: l10n.navReports,
             ),
             NavigationDestination(
